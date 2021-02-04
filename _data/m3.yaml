@@ -1,19 +1,31 @@
-# We can add any kind of data in this _data folder and this file.
-# In this example, we create a simple array of options and then in the _pages/collections.md file we 
-# Reference this data file in 'datafile' in the Front Matter and _layouts/list.html renders it 
-# This is simple, hopefully provides you with a good enough example to make changes as needed
-- name: GSA
-  url: https://gsa.gov
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus interdum pellentesque. Integer eu vehicula elit. Sed cursus magna in dui suscipit rhoncus. 
 
-- name: USDA
-  url: http://usda.gov/
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus interdum pellentesque. Integer eu vehicula elit. Sed cursus magna in dui suscipit rhoncus. 
 
-- name: Performance.gov
-  url: http://performance.gov/
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus interdum pellentesque. Integer eu vehicula elit. Sed cursus magna in dui suscipit rhoncus. 
+- name: Introduction
+  url: /m3-introduction
 
-- name: Login.gov
-  url: https://login.gov
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus interdum pellentesque. Integer eu vehicula elit. Sed cursus magna in dui suscipit rhoncus. 
+- name: Overview
+  url: /m3-overview
+
+- name: "Phase 0: Assesment"
+  url: /m3-phase0
+  activities:
+    - name: Define Vision
+    - name: Develop Major IT Business Case
+
+- name: "Phase 1: Readiness"
+  url: /m3-phase1
+
+- name: "Phase 2: Selection"
+  url: /m3-phase2
+
+- name: "Phase 3: Engagement"
+  url: /m3-phase3
+
+- name: "Phase 4: Migration"
+  url: /m3-phase4
+
+- name: "Phase 5: Operations"
+  url: /m3-phase5
+
+- name: Resources
+  url: /m3-resources
