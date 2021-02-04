@@ -1,31 +1,31 @@
 
 
 - name: Introduction
-  url: /m3-introduction
+  url: ../m3-introduction
 
 - name: Overview
-  url: /m3-overview
+  url: ../m3-overview
 
 - name: "Phase 0: Assesment"
-  url: /m3-phase0
+  url: ../m3-phase0
   activities:
     - name: Define Vision
     - name: Develop Major IT Business Case
 
 - name: "Phase 1: Readiness"
-  url: /m3-phase1
+  url: ../m3-phase1
 
 - name: "Phase 2: Selection"
-  url: /m3-phase2
+  url: ../m3-phase2
 
 - name: "Phase 3: Engagement"
-  url: /m3-phase3
+  url: ../m3-phase3
 
 - name: "Phase 4: Migration"
-  url: /m3-phase4
+  url: ../m3-phase4
 
 - name: "Phase 5: Operations"
-  url: /m3-phase5
+  url: ../m3-phase5
 
 - name: Resources
-  url: /m3-resources
+  url: ../m3-resources
