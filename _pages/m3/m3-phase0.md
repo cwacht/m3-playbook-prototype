@@ -5,6 +5,7 @@ permalink: /m3-phase0/
 datafile: m3
 phase: 0
 step: 3
+step0: 2
 phaseName: Assessment
 objective: Fulfill requirement to submit capital planning investments though Capital Planning and Investment Control (CPIC) process with required additional information.
 downloads:

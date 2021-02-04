@@ -13,7 +13,7 @@ This is an example showing how you can load date from the _data/ folder
 
       <div class="usa-step-indicator" aria-label="progress">
         <ol class="usa-step-indicator__segments">
-          {% for item in site.data.m3.steps %}
+          {% for item in site.data.m3 %}
             <li class="usa-step-indicator__segment
               {% if forloop.index == page.step %}
                 usa-step-indicator__segment--current
@@ -43,8 +43,9 @@ This is an example showing how you can load date from the _data/ folder
         <br>
         {{page.title}} Activities
         Program Management
+        {{page.activities}}
         <ul>
-          {% for item in page.activities.programManagement %}
+          {% for item in page.activities %}
           <li>
             <a href="{{ item.url }}"><b>{{ item.name }}</b></a>: {{item.responsibleParty}}
           </li>

@@ -6,8 +6,10 @@ layout: default
 This is an example showing how you can load date from the _data/ folder
 {% endcomment %}
 
-{% assign prev = "" %}
-{% assign next = "" %}
+
+{% assign step0 = page.step | minus: 1 %}
+{% assign prev = page.activity | minus: 2 %}
+{% assign next = page.activity %}
 
 
 <div class="usa-layout-docs usa-section">
@@ -24,9 +26,6 @@ This is an example showing how you can load date from the _data/ folder
               {% endif %}">
               <a href="{{ item.url }}" class="usa-step-indicator__segment-label"><b>{{ item.name }}</b><span class="usa-sr-only">completed</span></a>
             </li>
-            {% for activity in item.activities %}
-              
-            {% endfor %}
           {% endfor %}
         </ol>
       </div>
@@ -36,7 +35,12 @@ This is an example showing how you can load date from the _data/ folder
         <h1>{{page.title}}</h1>
         <br>
         <br>
-        Previous activity: 
+        {% if prev >= 0 %}
+        Previous activity: {{site.data[page.datafile][step0].activities[prev]}}
+        {% endif %}
+        <br>
+        <br>
+        Next activity: {{site.data[page.datafile][step0].activities[next]}}
         <br>
         <br>
 

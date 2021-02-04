@@ -76,6 +76,8 @@ ga:
 primary_navigation:
   - name: Home
     url: /
+  - name: M3
+    url: /m3/introduction/
   - name: Blog
     url: /blog/
   - name: Document
@@ -135,6 +137,7 @@ plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-datapage-generator
 
 ############################################################
 # Site configuration for the Jekyll 3 Pagination Gem
@@ -197,3 +200,19 @@ assets:
     - node_modules/uswds/dist/js
     - node_modules/uswds/dist/scss
     - node_modules/netlify-cms/dist
+
+page_gen-dirs: true
+
+page_gen:
+- data: m3.activities
+  template: m3-activities
+  dir: m3
+  name: url
+  title: name
+  debug: true
+- data: m3.steps
+  template: m3
+  dir: m3
+  name: url
+  title: name
+  debug: true
