@@ -5,23 +5,25 @@ Bookmark: Phase 1 Documentation (add links)
 2 versions of data organization
 
 1. Markdown
-/m3-
-Most data in .md files
-Small data file with only the data that needs to be shared across pages
-Some duplication
-Easier to navigate
-Try to use these page variables:
-page.dir
-page.name
-page.next
-page.previous
+  - path on site: /m3/m3-introduction
+  - Most data in /_pages directory in many .md files
+  - Small data file with only the data that needs to be shared across pages
+  - Some duplication
+  - Easier to navigate
+  - Try to use these page variables:
+    - page.dir
+    - page.name
+    - page.next
+    - page.previous
 
 
 2. Data file
-/m3/
-Large data file with everything in it (m3-relational.yaml)
-No .md files
-Minimize duplication
+  - path on site: /m3-data/introduction
+  - [jekyll-datapage](https://github.com/avillafiorita/jekyll-datapage_gen)
+  - Large data file with everything in it (m3-data.yaml)
+  - probably over 2000 lines of data
+  - No .md files
+  - Minimize duplication
 
 
 

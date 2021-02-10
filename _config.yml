@@ -206,16 +206,16 @@ assets:
 
 page_gen-dirs: true
 
-page_gen:
-- data: m3-data.activities
-  template: m3-activities-data
-  dir: m3
-  name: url
-  title: name
-  debug: true
-- data: m3-data.steps
-  template: m3-data
-  dir: m3
-  name: url
-  title: name
-  debug: true
+# page_gen:
+# - data: m3-data.steps
+#   template: m3-data
+#   dir: m3-data
+#   name: url
+#   title: name
+#   debug: true
+# - data: m3-data.steps[0]
+#   template: m3-activities-data
+#   dir: m3-data
+#   name: url
+#   title: name
+#   debug: true

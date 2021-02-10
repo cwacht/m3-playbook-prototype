@@ -2,11 +2,6 @@
 layout: default
 ---
 
-{% comment %}
-This is an example showing how you can load date from the _data/ folder
-{% endcomment %}
-
-
 {% assign phase = page.step | minus: 3 %}
 {% assign step0 = page.step | minus: 1 %}
 {% assign activityCounter = 1 %}
@@ -18,7 +13,7 @@ This is an example showing how you can load date from the _data/ folder
 
       <div class="usa-step-indicator" aria-label="progress">
         <ol class="usa-step-indicator__segments">
-          {% for item in site.data.m3.steps %}
+          {% for item in site.data.m3 %}
             <li class="usa-step-indicator__segment
               {% if forloop.index == page.step %}
                 usa-step-indicator__segment--current

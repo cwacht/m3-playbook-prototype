@@ -1,38 +1,35 @@
-# TODO
-# Remove steps obj, just use unamed list
-# 
-steps:
-  - name: Introduction
-    url: m3-introduction
-  - name: Overview
-    url: m3-overview
-  - name: "Phase 0: Assesment"
-    url: m3-phase0
-    activities:
-      - Define Vision
-      - Develop Major IT Business Case
-  - name: "Phase 1: Readiness"
-    url: m3-phase1
-    activities:
-      - Establish Initial Customer Program Management Office (PMO) Processes
-      - Establish Customer Governance Structure and Processes
-      - Establish Customer Risk Processes
-      - Conduct Procurement Planning
-      - Develop Lifecycle Cost in the Business Case
-      - Define Benefits of the Program
-      - Define Change Management Approach
-      - Understand As-Is Workforce
-      - Define As-Is and Initial Target State Systems Environments
-      - Plan and Conduct Initial Data Quality Assessment
-      - Develop Initial Target State Concept of Operations and Scope of Services
-      - Review Standard Business Capabilities & Document Business Capabilities
-  - name: "Phase 2: Selection"
-    url: m3-phase2
-  - name: "Phase 3: Engagement"
-    url: m3-phase3
-  - name: "Phase 4: Migration"
-    url: m3-phase4
-  - name: "Phase 5: Operations"
-    url: m3-phase5
-  - name: Resources
-    url: m3-resources
+
+- name: Introduction
+  url: m3-introduction
+- name: Overview
+  url: m3-overview
+- name: "Phase 0: Assesment"
+  url: m3-phase0
+  activities:
+    - Define Vision
+    - Develop Major IT Business Case
+- name: "Phase 1: Readiness"
+  url: m3-phase1
+  activities:
+    - Establish Initial Customer Program Management Office (PMO) Processes
+    - Establish Customer Governance Structure and Processes
+    - Establish Customer Risk Processes
+    - Conduct Procurement Planning
+    - Develop Lifecycle Cost in the Business Case
+    - Define Benefits of the Program
+    - Define Change Management Approach
+    - Understand As-Is Workforce
+    - Define As-Is and Initial Target State Systems Environments
+    - Plan and Conduct Initial Data Quality Assessment
+    - Develop Initial Target State Concept of Operations and Scope of Services
+    - Review Standard Business Capabilities & Document Business Capabilities
+- name: "Phase 2: Selection"
+  url: m3-phase2
+- name: "Phase 3: Engagement"
+  url: m3-phase3
+- name: "Phase 4: Migration"
+  url: m3-phase4
+- name: "Phase 5: Operations"
+  url: m3-phase5
+- name: Resources
+  url: m3-resources

@@ -2,17 +2,28 @@
 layout: default
 ---
 
-{% comment %}
-This is an example showing how you can load date from the _data/ folder
-{% endcomment %}
-
-
-
-{% assign step0 = page.phase | plus: 2 %}
-{% assign step = page.phase | plus: 3 %}
-{% assign prev = page.activity | minus: 2 %}
-{% assign next = page.activity %}
-{% assign parent = site.data.m3.steps[step0] %}
+{%- comment -%}
+page.title is the filename of the markdown file
+It provides the phase and the activity number
+{%- endcomment -%}
+{% assign phase = page.title | split: "." | first %}
+{% assign activity = page.title | split: "." | last %}
+{%- comment -%}
+Use the phase to determine which step we are on (for the step indicator)
+{%- endcomment -%}
+{% assign stepIndex = phase | plus: 2 %}
+{% assign step = phase | plus: 3 %}
+{%- comment -%}
+Use the step number to find the parent
+{%- endcomment -%}
+{% assign parent = site.data.m3[stepIndex] %}
+{%- comment -%}
+Use the activity number to find the next and previous activities
+{%- endcomment -%}
+{% assign prevIndex = activity | minus: 2 %}
+{% assign nextIndex = activity | minus: 0 %}
+{% assign prev = site.data.m3[stepIndex].activities[prevIndex] %}
+{% assign next = site.data.m3[stepIndex].activities[nextIndex] %}
 
 
 <div class="usa-layout-docs usa-section">
@@ -22,7 +33,7 @@ This is an example showing how you can load date from the _data/ folder
       {% comment %} Step Indicator {% endcomment %}
       <div class="usa-step-indicator" aria-label="progress">
         <ol class="usa-step-indicator__segments">
-          {% for item in site.data.m3.steps %}
+          {% for item in site.data.m3 %}
             <li class="usa-step-indicator__segment
               {% if forloop.index == step %}
                 usa-step-indicator__segment--current
@@ -36,20 +47,27 @@ This is an example showing how you can load date from the _data/ folder
       <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
 
         {%- comment -%}Breadcrumbs{%- endcomment -%}
-        <a href="/m3/{{site.data.m3.steps[0].url}}">M3 Playbook</a> > <a href="/m3/{{parent.url}}">{{parent.name}}</a>
+        <a href="/m3/{{site.data.m3[0].url}}">M3 Playbook</a> > <a href="/m3/{{parent.url}}">{{parent.name}}</a>
         
         
-        <h1>{{page.phase}}.{{page.activity}} {{page.name}}</h1>
+        <h1>{{page.title}} {{page.name}}</h1>
         <br>
         <br>
-        {% if prev >= 0 %}
-          Previous activity: <a href="/m3/activities/{{page.phase}}.{{prev | plus: 1}}">{{site.data.m3.steps[step0].activities[prev]}}</a>
+        Category: {{page.category}}</h1>
+        <br>
+        <br>
+        {% if prevIndex >= 0 %}
+          Previous activity:
+          <a href="/m3/activities/{{phase}}.{{prevIndex | plus: 1}}">
+            {{phase}}.{{prevIndex | plus: 1}} {{prev}}
+          </a>
           <br>
           <br>
         {% endif %}
-        {%- comment -%} TODO if it exists {%- endcomment -%}
-        {% if site.data.m3.steps[step0].activities[next] %}
-          Next activity: <a href="/m3/activities/{{page.phase}}.{{next | plus: 1}}">{{site.data.m3.steps[step0].activities[next]}}</a>
+        {% if next %}
+          Next activity: <a href="/m3/activities/{{phase}}.{{nextIndex | plus: 1}}">
+            {{phase}}.{{nextIndex | plus: 1}} {{next}}
+          </a>
           <br>
           <br>
         {% endif %}
@@ -58,7 +76,7 @@ This is an example showing how you can load date from the _data/ folder
         <br>
         <br>
         Downloads:
-        <a href="{{page.downloads.guidance}}"><b>Phase {{page.phase}} Guidance</b></a>
+        <a href="{{page.downloads.guidance}}"><b>Phase {{phase}} Guidance</b></a>
         <br>
         <br>
         Activities
