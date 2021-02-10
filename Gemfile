@@ -26,3 +26,5 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 gem "html-proofer", "~> 3.18"
 
 gem 'jekyll-datapage-generator'
+# gem 'jekyll-api'
+# gem 'jekyll-admin', group: :jekyll_plugins

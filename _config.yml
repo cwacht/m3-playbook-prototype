@@ -76,8 +76,10 @@ ga:
 primary_navigation:
   - name: Home
     url: /
-  - name: M3
+  - name: M3 (.yaml)
     url: /m3/introduction/
+  - name: M3 (.md)
+    url: /m3-introduction/
   - name: Blog
     url: /blog/
   - name: Document
@@ -138,6 +140,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-datapage-generator
+  # - jekyll-api
 
 ############################################################
 # Site configuration for the Jekyll 3 Pagination Gem
@@ -204,14 +207,14 @@ assets:
 page_gen-dirs: true
 
 page_gen:
-- data: m3.activities
-  template: m3-activities
+- data: m3-data.activities
+  template: m3-activities-data
   dir: m3
   name: url
   title: name
   debug: true
-- data: m3.steps
-  template: m3
+- data: m3-data.steps
+  template: m3-data
   dir: m3
   name: url
   title: name

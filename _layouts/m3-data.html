@@ -7,11 +7,6 @@ This is an example showing how you can load date from the _data/ folder
 {% endcomment %}
 
 
-{% assign phase = page.step | minus: 3 %}
-{% assign step0 = page.step | minus: 1 %}
-{% assign activityCounter = 1 %}
-
-
 <div class="usa-layout-docs usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
@@ -23,7 +18,7 @@ This is an example showing how you can load date from the _data/ folder
               {% if forloop.index == page.step %}
                 usa-step-indicator__segment--current
               {% endif %}">
-              <a href="/m3/{{ item.url }}" class="usa-step-indicator__segment-label">{{ item.name }}<span class="usa-sr-only">completed</span></a>
+              <a href="{{ item.url }}" class="usa-step-indicator__segment-label"><b>{{ item.name }}</b><span class="usa-sr-only">completed</span></a>
             </li>
           
           {% endfor %}
@@ -37,37 +32,32 @@ This is an example showing how you can load date from the _data/ folder
         <br>
         Downloads:
         <br>
-        <a href="{{page.downloads.playbook}}">Phase {{phase}} Playbook</a>
+        <a href="{{page.downloads.playbook}}"><b>Phase {{page.phase}} Playbook</b></a>
         <br>
-        <a href="{{page.downloads.guidance}}">Phase {{phase}} Guidance</a>
+        <a href="{{page.downloads.guidance}}"><b>Phase {{page.phase}} Guidance</b></a>
         {% if page.downloads.tollgate %}
         <br>
-        <a href="{{page.downloads.tollgate}}">Phase {{phase}} Tollgate</a>
+        <a href="{{page.downloads.tollgate}}"><b>Phase {{page.phase}} Tollgate</b></a>
         {% endif %}
         <br>
         <br>
         {{page.title}} Activities
-        <br>
-        <br>
-
         Program Management
         <ul>
           {% for item in page.activities.programManagement %}
           <li>
-            <a href="/m3/activities/{{ phase }}.{{activityCounter}}">{{ phase }}.{{activityCounter}} {{ item.name }}</a> ({{ item.responsibleParty }})
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>: {{item.responsibleParty}}
           </li>
-          {% assign activityCounter = activityCounter | plus: 1 %}
           {% endfor %}
         </ul>
         <br>
         <br>
         Workforce, Organization, and Stakeholders 
         <ul>
-          {% for item in page.activities.organization  %}
+          {% for item in page.activities.workforceOrganizationAndStakeholders  %}
           <li>
-            <a href="/m3/activities/{{ phase }}.{{activityCounter}}">{{ phase }}.{{activityCounter}} {{ item.name }}</a> ({{ item.responsibleParty }})
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>: {{ item.responsibleParty }}
           </li>
-          {% assign activityCounter = activityCounter | plus: 1 %}
           {% endfor %}
         </ul>
         <br>
@@ -76,27 +66,25 @@ This is an example showing how you can load date from the _data/ folder
         <ul>
           {% for item in page.activities.technology %}
           <li>
-            <a href="/m3/activities/{{ phase }}.{{activityCounter}}">{{ phase }}.{{activityCounter}} {{ item.name }}</a> ({{ item.responsibleParty }})
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>: {{ item.responsibleParty }}
           </li>
-          {% assign activityCounter = activityCounter | plus: 1 %}
           {% endfor %}
         </ul>
         <br>
         <br>
         Process and Service Delivery 
         <ul>
-          {% for item in page.activities.process  %}
+          {% for item in page.activities.processAndServiceDelivery  %}
           <li>
-            <a href="/m3/activities/{{ phase }}.{{activityCounter}}">{{ phase }}.{{activityCounter}} {{ item.name }}</a> ({{ item.responsibleParty }})
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>: {{ item.responsibleParty }}
           </li>
-          {% assign activityCounter = activityCounter | plus: 1 %}
           {% endfor %}
         </ul>
         <br>
         <br>
-        Phase {{phase}} Documentation:
+        Phase {{page.phase}} Documentation:
         <br>
-        The following documentation is developed during Phase {{phase}}, follows Federal CPIC requirements, and is used to inform a review, if necessary. Agencies should follow CPIC guidance to develop these outputs. Agencies purchasing transaction processing services only will identify relevant activities and artifacts for their projects using the <a href="https://ussm.gsa.gov/assets/files/Tailoring-Guide8.29.18.xlsx">M3 Services Tailoring Guide</a>.
+        The following documentation is developed during Phase {{page.phase}}, follows Federal CPIC requirements, and is used to inform a review, if necessary. Agencies should follow CPIC guidance to develop these outputs. Agencies purchasing transaction processing services only will identify relevant activities and artifacts for their projects using the <a href="https://ussm.gsa.gov/assets/files/Tailoring-Guide8.29.18.xlsx">M3 Services Tailoring Guide</a>.
         <br>
         <br>
         Artifact Samples:	
@@ -109,9 +97,9 @@ This is an example showing how you can load date from the _data/ folder
           {% for item in page.documentation  %}
           <li>
             {% if item.url %}
-            <a href="/m3/{{ item.url }}">{{ item.name }}</a>
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>
             {% else %}
-            {{ item.name }}
+            <b>{{ item.name }}</b>
             {% endif %}
           </li>
           {% endfor %}
@@ -120,26 +108,26 @@ This is an example showing how you can load date from the _data/ folder
         <br>
         Information Contained in Review Discussion (if necessary)
         <ul>
-          {% for item in page.tollageInfo  %}
+          {% for item in page.tollagetInfo  %}
           <li>
             {% if item.url %}
-            <a href="/m3/{{ item.url }}">{{ item.name }}</a>
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>
             {% else %}
-            {{ item.name }}
+            <b>{{ item.name }}</b>
             {% endif %}
           </li>
           {% endfor %}
         </ul>
         <br>
         <br>
-        Exit Criteria (to Move to Phase {{ phase | to_integer | plus: 1 }})
+        Exit Criteria (to Move to Phase {{ page.phase | to_integer | plus: 1 }})
         <ul>
           {% for item in page.exitCriteria  %}
           <li>
             {% if item.url %}
-            <a href="/m3/{{ item.url }}">{{ item.name }}</a>
+            <a href="{{ item.url }}"><b>{{ item.name }}</b></a>
             {% else %}
-            {{ item.name }}
+            <b>{{ item.name }}</b>
             {% endif %}
           </li>
           {% endfor %}

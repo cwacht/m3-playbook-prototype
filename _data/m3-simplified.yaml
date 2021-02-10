@@ -1,0 +1,45 @@
+activities:
+  - &a01
+    name: "Define Vision"
+    url: ../0-1
+    step: 3
+    layout: m3-activities
+    responsibleParty: shared
+  - &a02
+    name: "Develop Major IT Business Case"
+    url: ../0-2
+    step: 3
+    layout: m3-activities
+    responsibleParty: customer
+  - &a11
+    name: "Establish Initial Customer PMO and Processes"
+    url: ../1-1
+    step: 4
+    layout: m3-activities
+    responsibleParty: customer
+  - &a12
+    name: "Establish Customer Governance Structure and Processes"
+    url: ../1-2
+    step: 3
+    layout: m3-activities
+    responsibleParty: customer
+
+steps:
+  - name: Introduction
+    url: ../introduction
+  - name: Overview
+    url: ../overview
+  - name: "Phase 0: Assesment"
+    url: ../phase0
+  - name: "Phase 1: Readiness"
+    url: ../phase1
+  - name: "Phase 2: Selection"
+    url: ../phase2
+  - name: "Phase 3: Engagement"
+    url: ../phase3
+  - name: "Phase 4: Migration"
+    url: ../phase4
+  - name: "Phase 5: Operations"
+    url: ../phase5
+  - name: Resources
+    url: ../resources
