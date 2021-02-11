@@ -1,5 +1,6 @@
-Bookmark: Phase 1 Documentation (add links)
+Bookmark: Phase 1 Activities
 
+Learn about Netlify to enable jekyll-admin on federalist
 
 
 2 versions of data organization

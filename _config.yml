@@ -219,15 +219,3 @@ page_gen-dirs: true
 #   name: url
 #   title: name
 #   debug: true
-
-backend:
-  name: github
-  repo: cwacht/m3-playbook-prototype
-  base_url: https://federalistapp.18f.gov
-  auth_endpoint: external/auth/github
-  preview_context: federalist/build
-  branch: main
-  
-
-  # optional
-  use_graphql: true
