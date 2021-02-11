@@ -12,28 +12,20 @@ publish_mode: editorial_workflow
 logo_url: https://federalist.18f.gov/assets/images/federalist-logo.png
 
 collections:
-  - label: Posts
-    name: posts
-    folder: _posts/
+  - label: Phases
+    name: phases
+    folder: _pages/m3
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     editor:
       preview: false
     fields:
       - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'post'}
       - {label: "Title", name: "title", widget: "string"}
-      - {
-          label: "Publish Date",
-          name: "date",
-          widget: "datetime",
-          format: 'MMMM D, YYYY',
-          dateFormat: 'MMMM D, YYYY',
-          timeFormat: false
-        }
       - {label: "Body", name: "body", widget: "markdown"}
-  - label: Pages
-    name: pages
-    folder: _pages/
+  - label: Activities
+    name: acitivies
+    folder: _pages/m3/activities
     create: true
     slug: "{{slug}}"
     editor:
@@ -50,4 +42,4 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: "Code", name: "code", widget: "code"}
+      - {label: "Code", name: "body", widget: "code"}
