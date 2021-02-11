@@ -31,3 +31,23 @@ collections:
           timeFormat: false
         }
       - {label: "Body", name: "body", widget: "markdown"}
+  - label: Pages
+    name: pages
+    folder: _pages/
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'post'}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - label: Data
+    name: data
+    folder: _data/
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Code", name: "code", widget: "code"}
