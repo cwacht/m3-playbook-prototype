@@ -14,9 +14,9 @@ downloads:
 
 activities:
   programManagement:
-    - name: 0.1 Define Vision
+    - name: Define Vision
       responsibleParty: shared
-    - name: 0.2 Develop Major IT Business Case
+    - name: Develop Major IT Business Case
       responsibleParty: customer
 
 documentation:

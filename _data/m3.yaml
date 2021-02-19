@@ -1,3 +1,28 @@
+# This file provides information that is used on multiple pages
+# It is intended to reduce the amount of duplication across files
+
+# activities-v2
+# Allows removal of:
+#   activities list in phase files
+#   responsibleParty, and category in activity files
+#
+# Will need more logic for category loops on phase page
+
+# activities-v3
+# Allows simple category loops on phase page
+#
+# Will need more logic to find prev,next,current on activity page
+# and its hard to tell which category
+
+# activities-v4
+# Allows simple category loops and simpl prev,next
+#
+# But the anchors are crazy and its hard to tell which category
+
+# activities-v5
+# Simple, foolproof
+#
+# Slightly more logic for category loops on phase page
 
 - name: Introduction
   url: m3-introduction
@@ -8,6 +33,36 @@
   activities:
     - Define Vision
     - Develop Major IT Business Case
+  activities-v2:
+    - name: Define Vision
+      category: programManagement
+      responsibleParty: shared
+    - name: Develop Major IT Business Case
+      category: programManagement
+      responsibleParty: customer
+  activities-v3: #THIS ONE MAKES THE MOST SENSE
+    programManagement:
+      - name: Define Vision
+        responsibleParty: shared
+      - name: Develop Major IT Business Case
+        responsibleParty: customer
+  activities-v4:
+    - &a01
+      name: Define Vision
+      responsibleParty: shared
+    - &a02
+      name: Develop Major IT Business Case
+      responsibleParty: customer
+  programManagement:
+    - *a01
+    - *a02
+  activities-v5:
+    - name: Define Vision
+      responsibleParty: shared
+    - name: Develop Major IT Business Case
+      responsibleParty: customer
+  programManagementSize: 2
+
 - name: "Phase 1: Readiness"
   url: m3-phase1
   activities:
