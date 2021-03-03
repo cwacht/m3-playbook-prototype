@@ -89,4 +89,5 @@ collections:
     editor:
       preview: false
     fields:
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Code", name: "body", widget: "code"}
