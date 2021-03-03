@@ -21,18 +21,18 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'post'}
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'm3'}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - label: Activities
-    name: acitivies
-    folder: _pages/m3/activities
+  - label: SubPhases
+    name: subPhases
+    folder: _pages/m3/subPhase
     create: true
     slug: "{{slug}}"
     editor:
       preview: false
     fields:
-      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'post'}
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'm3-activities'}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
   - label: Data

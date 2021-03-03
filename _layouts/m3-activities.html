@@ -24,13 +24,20 @@ Use the step number to find the parent
 Use the activity number to find the next and previous activities
 {%- endcomment -%}
 {% assign prevIndex = activity | minus: 2 %}
+{% assign prevIndexPlus1 = prevIndex | plus: 1 %}
 {% assign prev = parent.activities[prevIndex] %}
 
 {% assign nextIndex = activity | minus: 0 %}
+{% assign nextIndexPlus1 = nextIndex | plus: 1 %}
 {% assign next = parent.activities[nextIndex] %}
 
 {% assign currentIndex = activity | minus: 1 %}
 {% assign current = parent.activities[currentIndex] %}
+
+{% assign firstStepURL = "/m3/" | append: site.data.m3[0].url | relative_url %}
+{% assign parentStepURL = "/m3/phase/" | append: phase | relative_url %}
+{% assign prevSubPhaseURL = "/m3/subphase/" | append: phase | append: "." | append: prevIndexPlus1 | relative_url %}
+{% assign nextSubPhaseURL = "/m3/subphase/" | append: phase | append: "." | append: nextIndexPlus1 | relative_url %}
 
 
 <div class="usa-layout-docs usa-section">
@@ -42,7 +49,9 @@ Use the activity number to find the next and previous activities
       <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
 
         {%- comment -%}Breadcrumbs{%- endcomment -%}
-        <a href="/m3/{{site.data.m3[0].url}}">M3 Playbook</a> > <a href="/m3/phase/{{phase}}">{{parent.name}}</a>
+        {{relative_url}}
+        {{baseurl}}
+        <a href="{{firstStepURL}}">M3 Playbook</a> > <a href="{{parentStepURL}}">{{parent.name}}</a>
         
         
         <h1>{{page.title}} {{current}}</h1>
@@ -53,19 +62,26 @@ Use the activity number to find the next and previous activities
         <br>
         {% if prevIndex >= 0 %}
           Previous activity:
-          <a href="/m3/activities/{{phase}}.{{prevIndex | plus: 1}}">
+          <a href="{{prevSubPhaseURL}}">
             {{phase}}.{{prevIndex | plus: 1}} {{prev}}
           </a>
           <br>
           <br>
         {% endif %}
+        {%- comment -%}
         {% if next %}
-          Next activity: <a href="/m3/activities/{{phase}}.{{nextIndex | plus: 1}}">
+          Next activity: <a href="{{nextSubPhaseURL}}">
             {{phase}}.{{nextIndex | plus: 1}} {{next}}
           </a>
           <br>
           <br>
         {% endif %}
+        {%- endcomment -%}
+        Next activity: <a href="{{nextSubPhaseURL}}">
+          {{phase}}.{{nextIndex | plus: 1}} {{next}}
+        </a>
+        <br>
+        <br>
 
         Objective: {{page.objective}}
         <br>
