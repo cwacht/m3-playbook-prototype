@@ -21,7 +21,7 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'm3'}
+      - {label: 'Layout', name: 'layout', widget: "select", options: ["m3"]}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Name of Phase", name: "phaseName", widget: "string"}
       - {label: "Objective", name: "objective", widget: "text"}
@@ -37,6 +37,23 @@ collections:
         name: "documentation"
         widget: "list"
         summary: '{{fields.name}}'
+        minimize_collapsed: true
+        fields:
+          - {label: Name, name: name, widget: string}
+          - {label: URL, name: url, widget: string, required: false}
+      - label: "Tollgate Info"
+        name: "tollageInfo"
+        widget: "list"
+        summary: '{{fields.name}}'
+        minimize_collapsed: true
+        fields:
+          - {label: Name, name: name, widget: string}
+          - {label: URL, name: url, widget: string, required: false}
+      - label: "Exit Criteria"
+        name: "exitCriteria"
+        widget: "list"
+        summary: '{{fields.name}}'
+        minimize_collapsed: true
         fields:
           - {label: Name, name: name, widget: string}
           - {label: URL, name: url, widget: string, required: false}

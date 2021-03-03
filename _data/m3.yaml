@@ -97,12 +97,12 @@
       - name: OMG
         responsibleParty: customer
 - name: "Phase 2: Selection"
-  url: m3-phase2
+  isPhase: true
 - name: "Phase 3: Engagement"
-  url: m3-phase3
+  isPhase: true
 - name: "Phase 4: Migration"
-  url: m3-phase4
+  isPhase: true
 - name: "Phase 5: Operations"
-  url: m3-phase5
+  isPhase: true
 - name: Resources
-  url: m3-resources
+  url: resources
