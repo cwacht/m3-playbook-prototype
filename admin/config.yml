@@ -36,10 +36,10 @@ collections:
       - label: "Documentation"
         name: "documentation"
         widget: "list"
-        summary: '{{fields.name}} - {{fields.author.url}}'
+        summary: '{{fields.name}}'
         fields:
           - {label: Name, name: name, widget: string}
-          - {label: URL, name: url, widget: string}
+          - {label: URL, name: url, widget: string, required: false}
   - label: SubPhases
     name: subPhases
     folder: _pages/m3/subPhase
