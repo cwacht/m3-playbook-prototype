@@ -57,9 +57,16 @@ collections:
         fields:
           - {label: Name, name: name, widget: string}
           - {label: URL, name: url, widget: string, required: false}
-  - label: SubPhases
-    name: subPhases
-    folder: _pages/m3/subPhase
+      - label: "Subphases"
+        name: "subphase"
+        widget: "relation"
+        collection: "subphases"
+        search_fields: ["title"]
+        display_fields: ["title"]
+        value_field: "title"
+  - label: Subphases
+    name: subphases
+    folder: _pages/m3/subphase
     create: true
     slug: "{{slug}}"
     editor:
