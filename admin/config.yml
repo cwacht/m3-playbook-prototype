@@ -33,6 +33,19 @@ collections:
           - {label: "Playbook Link", name: "playbook", widget: "string"}
           - {label: "Guidance Link", name: "guidance", widget: "string"}
           - {label: "Tollgate Link", name: "tollgate", widget: "string"}
+      - label: "Subphases"
+        name: "subphases"
+        widget: "list"
+        summary: '{{fields.name}}'
+        minimize_collapsed: true
+        fields:
+          - label: "Subphase"
+            name: "subphase"
+            widget: "relation"
+            collection: "subphases"
+            search_fields: ["name"]
+            display_fields: ["name"]
+            value_field: "name"
       - label: "Documentation"
         name: "documentation"
         widget: "list"
@@ -57,13 +70,6 @@ collections:
         fields:
           - {label: Name, name: name, widget: string}
           - {label: URL, name: url, widget: string, required: false}
-      - label: "Subphases"
-        name: "subphase"
-        widget: "relation"
-        collection: "subphases"
-        search_fields: ["name"]
-        display_fields: ["name"]
-        value_field: "name"
   - label: Subphases
     name: subphases
     folder: _pages/m3/subphase
