@@ -8,7 +8,7 @@
 #
 # Will need more logic for category loops on phase page
 
-# activities-v3
+# activities-v3 <--- THIS ONE MAKES THE MOST SENSE
 # Allows simple category loops on phase page
 #
 # Will need more logic to find prev,next,current on activity page
@@ -25,59 +25,77 @@
 # Slightly more logic for category loops on phase page
 
 - name: Introduction
-  url: m3-introduction
+  url: introduction
 - name: Overview
-  url: m3-overview
+  url: overview
 - name: "Phase 0: Assesment"
-  url: m3-phase0
-  activities:
-    - Define Vision
-    - Develop Major IT Business Case
-  activities-v2:
-    - name: Define Vision
-      category: programManagement
-      responsibleParty: shared
-    - name: Develop Major IT Business Case
-      category: programManagement
-      responsibleParty: customer
-  activities-v3: #THIS ONE MAKES THE MOST SENSE
+  isPhase: true
+  # activities-v1:
+  #   - Define Vision
+  #   - Develop Major IT Business Case
+  # activities-v2:
+  #   - name: Define Vision
+  #     category: programManagement
+  #     responsibleParty: shared
+  #   - name: Develop Major IT Business Case
+  #     category: programManagement
+  #     responsibleParty: customer
+  activities: #V3 THIS ONE MAKES THE MOST SENSE
     programManagement:
       - name: Define Vision
         responsibleParty: shared
       - name: Develop Major IT Business Case
         responsibleParty: customer
-  activities-v4:
-    - &a01
-      name: Define Vision
-      responsibleParty: shared
-    - &a02
-      name: Develop Major IT Business Case
-      responsibleParty: customer
-  programManagement:
-    - *a01
-    - *a02
-  activities-v5:
-    - name: Define Vision
-      responsibleParty: shared
-    - name: Develop Major IT Business Case
-      responsibleParty: customer
-  programManagementSize: 2
+  # activities-v4:
+  #   - &a01
+  #     name: Define Vision
+  #     responsibleParty: shared
+  #   - &a02
+  #     name: Develop Major IT Business Case
+  #     responsibleParty: customer
+  # programManagement:
+  #   - *a01
+  #   - *a02
+  # activities-v5:
+  #   - name: Define Vision
+  #     responsibleParty: shared
+  #   - name: Develop Major IT Business Case
+  #     responsibleParty: customer
+  #   programManagementSize: 2
 
 - name: "Phase 1: Readiness"
-  url: m3-phase1
+  isPhase: true
   activities:
-    - Establish Initial Customer Program Management Office (PMO) Processes
-    - Establish Customer Governance Structure and Processes
-    - Establish Customer Risk Processes
-    - Conduct Procurement Planning
-    - Develop Lifecycle Cost in the Business Case
-    - Define Benefits of the Program
-    - Define Change Management Approach
-    - Understand As-Is Workforce
-    - Define As-Is and Initial Target State Systems Environments
-    - Plan and Conduct Initial Data Quality Assessment
-    - Develop Initial Target State Concept of Operations and Scope of Services
-    - Review Standard Business Capabilities & Document Business Capabilities
+    programManagement:
+      - name: Establish Initial Customer Program Management Office (PMO) Processes
+        responsibleParty: customer
+      - name: Establish Customer Governance Structure and Processes
+        responsibleParty: customer
+      - name: Establish Customer Risk Processes
+        responsibleParty: customer
+      - name: Conduct Procurement Planning
+        responsibleParty: customer
+      - name: Develop Lifecycle Cost in the Business Case
+        responsibleParty: customer
+      - name: Define Benefits of the Program
+        responsibleParty: customer
+    organization:
+      - name: Define Change Management Approach
+        responsibleParty: customer
+      - name: Understand As-Is Workforce
+        responsibleParty: customer
+    technology:
+      - name: Define As-Is and Initial Target State Systems Environments
+        responsibleParty: customer
+      - name: Plan and Conduct Initial Data Quality Assessment
+        responsibleParty: customer
+    process:
+      - name: Develop Initial Target State Concept of Operations and Scope of Services
+        responsibleParty: customer
+      - name: Review Standard Business Capabilities & Document Business Capabilities
+        responsibleParty: customer
+      - name: OMG
+        responsibleParty: customer
 - name: "Phase 2: Selection"
   url: m3-phase2
 - name: "Phase 3: Engagement"

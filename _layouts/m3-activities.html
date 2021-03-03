@@ -37,24 +37,12 @@ Use the activity number to find the next and previous activities
   <div class="grid-container">
     <div class="grid-row grid-gap">
 
-      {% comment %} Step Indicator {% endcomment %}
-      <div class="usa-step-indicator" aria-label="progress">
-        <ol class="usa-step-indicator__segments">
-          {% for item in site.data.m3 %}
-            <li class="usa-step-indicator__segment
-              {% if forloop.index == step %}
-                usa-step-indicator__segment--current
-              {% endif %}">
-              <a href="/m3/{{ item.url }}" class="usa-step-indicator__segment-label"><b>{{ item.name }}</b><span class="usa-sr-only">completed</span></a>
-            </li>
-          {% endfor %}
-        </ol>
-      </div>
+      {% include step-indicator.html %}
 
       <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
 
         {%- comment -%}Breadcrumbs{%- endcomment -%}
-        <a href="/m3/{{site.data.m3[0].url}}">M3 Playbook</a> > <a href="/m3/{{parent.url}}">{{parent.name}}</a>
+        <a href="/m3/{{site.data.m3[0].url}}">M3 Playbook</a> > <a href="/m3/phase/{{phase}}">{{parent.name}}</a>
         
         
         <h1>{{page.title}} {{current}}</h1>

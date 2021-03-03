@@ -76,10 +76,8 @@ ga:
 primary_navigation:
   - name: Home
     url: /
-  - name: M3 (.yaml)
+  - name: M3
     url: /m3/introduction/
-  - name: M3 (.md)
-    url: /m3-introduction/
   - name: Blog
     url: /blog/
   - name: Document

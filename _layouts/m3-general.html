@@ -1,26 +1,11 @@
 ---
 layout: default
 ---
-{%- comment -%}
-TODO - Determine index of the first phase by stepping through items
-{% assign firstPhase = 0 %}
-{% for item in site.data.m3 %}
-  {% if item.isPhase %}
-    {% assign firstPhase = loop.index | plus: 0 %}
-    firstPhaseLOOP: {{firstPhase}}
-    {% break %}
-  {% endif %}
-{% endfor %}
-{%- endcomment -%}
-{% assign firstPhase = 2 %}
 
-{%- comment -%}
 {% assign phase = page.step | minus: 3 %}
 {% assign step0 = page.step | minus: 1 %}
-{%- endcomment -%}
-{% assign step0 = page.title | plus: firstPhase %} 
-{% assign step = step0 | plus: 1 %} 
-{% assign phase = page.title | plus: 0 %}
+{% assign step = page.step | minus: 0 %}
+
 {% assign subPhaseCounter = 1 %}
 {% assign pageData = site.data.m3[step0] %}
 
@@ -30,7 +15,7 @@ TODO - Determine index of the first phase by stepping through items
     <div class="grid-row grid-gap">
 
       {% include step-indicator.html %}
-      {% assign phase = page.title | plus: 0 %}
+
       <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
         <h1>{{pageData.name}}</h1>
         Objective: {{page.objective}}
