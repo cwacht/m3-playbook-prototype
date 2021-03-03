@@ -15,7 +15,7 @@ logo_url: https://federalist.18f.gov/assets/images/federalist-logo.png
 collections:
   - label: Phases
     name: phases
-    folder: _pages/m3
+    folder: _pages/m3/phase
     create: true
     slug: "{{slug}}"
     editor:
@@ -23,7 +23,23 @@ collections:
     fields:
       - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'm3'}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Name of Phase", name: "phaseName", widget: "string"}
+      - {label: "Objective", name: "objective", widget: "text"}
+      - label: "Downloads"
+        name: "downloads"
+        widget: "object"
+        summary: '{{fields.image}}'
+        fields:
+          - {label: "Playbook Link", name: "playbook", widget: "string"}
+          - {label: "Guidance Link", name: "guidance", widget: "string"}
+          - {label: "Tollgate Link", name: "tollgate", widget: "string"}
+      - label: "Documentation"
+        name: "documentation"
+        widget: "list"
+        summary: '{{fields.name}} - {{fields.author.url}}'
+        fields:
+          - {label: Name, name: name, widget: string}
+          - {label: URL, name: url, widget: string}
   - label: SubPhases
     name: subPhases
     folder: _pages/m3/subPhase
