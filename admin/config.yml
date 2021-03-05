@@ -78,9 +78,18 @@ collections:
     editor:
       preview: false
     fields:
-      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'm3-activities'}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: 'Layout', name: 'layout', widget: "select", options: ["m3-activities"]}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Name of Phase", name: "phaseName", widget: "string"}
+      - {label: "Objective", name: "objective", widget: "text"}
+      - label: "Downloads"
+        name: "downloads"
+        widget: "object"
+        summary: '{{fields.image}}'
+        fields:
+          - {label: "Playbook Link", name: "playbook", widget: "string"}
+          - {label: "Guidance Link", name: "guidance", widget: "string"}
+          - {label: "Tollgate Link", name: "tollgate", widget: "string"}
   - label: Data
     name: data
     folder: _data/

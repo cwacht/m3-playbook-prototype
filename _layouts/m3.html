@@ -50,8 +50,13 @@ TODO - Determine index of the first phase by stepping through items
         {{page.title}} Activities
         <br>
         <br>
-
+        {% assign subpage = site.pages | where: 'title', '1.7' %}
+        OMG{{ subpage[0].name }}
+        <br>
+        <br>
         Program Management
+        <br>
+        <br>
         <ul>
           {% for item in pageData.activities.programManagement %}
           <li>
