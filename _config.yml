@@ -128,8 +128,6 @@ collections:
     output: true
     permalink: /:path
 
-keep_files: [static-api]
-
 permalink: pretty
 
 markdown: kramdown
