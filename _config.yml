@@ -126,9 +126,11 @@ searchgov:
 collections:
   pages:
     output: true
-    permalink: /:path/
+    permalink: /:path
 
-permalink: pretty
+keep_files: [static-api]
+
+# permalink: pretty
 
 markdown: kramdown
 plugins:
