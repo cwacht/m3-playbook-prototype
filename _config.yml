@@ -130,7 +130,7 @@ collections:
 
 keep_files: [static-api]
 
-# permalink: pretty
+permalink: pretty
 
 markdown: kramdown
 plugins:
