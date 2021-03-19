@@ -126,7 +126,9 @@ searchgov:
 collections:
   pages:
     output: true
-    permalink: /:path
+    permalink: /:path/
+
+keep_files: [static-api]
 
 permalink: pretty
 
