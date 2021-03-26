@@ -1,0 +1,19 @@
+---
+---
+
+{"entries":[
+
+{%- for post in site.pages -%}
+  {
+  {%- for items in post -%}
+    {%- assign subset = items | where_exp: "i", "i != 'output' and i != 'next' and i != 'previous' and i != 'content'" -%}
+    
+    {%- for item in subset -%}
+        "{{ item }}": {%- comment -%}"{{ post[item]  }}",{%- endcomment -%}
+    {%- endfor -%}
+    
+  {%- endfor -%}
+  }
+{%- endfor -%}
+
+]}

@@ -36,7 +36,18 @@ module Jekyll
 
       #prepare output for JSON
       # post.data["related_posts"] = related_posts(post,site)
-      output = post.to_liquid
+      output = [
+        "url": post.to_liquid["url"],
+        "phase": post.to_liquid["step"],
+        "name": post.to_liquid["phaseName"],
+        "objective": post.to_liquid["objective"],
+        "downloads": post.to_liquid["downloads"],
+        "activities": post.to_liquid["activities"],
+        "documentation": post.to_liquid["documentation"],
+        "tollgateInfo": post.to_liquid["tollgateInfo"],
+        "exitCriteria": post.to_liquid["exitCriteria"]
+      ]
+      # output = post.to_liquid
       # output["next"] = output["next"].id unless output["next"].nil?
       # output["previous"] = output["previous"].id unless output["previous"].nil?
 
