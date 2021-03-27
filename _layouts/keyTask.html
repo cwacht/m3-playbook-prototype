@@ -15,7 +15,7 @@ layout: default
 
       <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
         
-        <a href="/m3/introduction">M3 Playbook</a> > <a href="{{parentStepURL}}">Phase {{parent.phase}}: {{parent.name}}</a>
+        <a href="{{'/m3/introduction' | relative_url}}">M3 Playbook</a> > <a href="{{parent.url | relative_url}}">Phase {{parent.phase}}: {{parent.name}}</a>
         
         
         <h1>{{page.phase}}.{{page.keyTask}} {{page.name}}</h1>
@@ -28,7 +28,7 @@ layout: default
         {% assign prev = site.pages | where: 'phase', page.phase | where: 'keyTask', prevTask | first %}
         {% if prev %}
           Previous activity:
-          <a href="/m3/subphase/{{prev.phase}}.{{prev.keyTask}}">
+          <a href="{{baseurl}}/m3/subphase/{{prev.phase}}.{{prev.keyTask}}">
             {{prev.phase}}.{{prev.keyTask}} {{prev.name}}
           </a>
           <br>
@@ -38,7 +38,7 @@ layout: default
         {% assign next = site.pages | where: 'phase', page.phase | where: 'keyTask', nextTask | first %}
         {% if next %}
           Next activity:
-          <a href="/m3/subphase/{{next.phase}}.{{next.keyTask}}">
+          <a href="{{baseurl}}/m3/subphase/{{next.phase}}.{{next.keyTask}}">
             {{next.phase}}.{{next.keyTask}} {{next.name}}
           </a>
           <br>
