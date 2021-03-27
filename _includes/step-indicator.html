@@ -5,14 +5,14 @@
 <div class="usa-step-indicator" aria-label="progress">
   <ol class="usa-step-indicator__segments">
     <li class="usa-step-indicator__segment">
-    <a href="/m3/introduction" class="usa-step-indicator__segment-label">Introduction</a>
+    <a href="{{'/m3/introduction' | relative_url}}" class="usa-step-indicator__segment-label">Introduction</a>
     </li>
     {% for item in phases %}
       <li class="usa-step-indicator__segment
         {% if item.phase == page.phase %}
           usa-step-indicator__segment--current
         {% endif %}">
-        <a href="{{ item.url }}" class="usa-step-indicator__segment-label">Phase {{item.phase}}: {{ item.name }}</a>
+        <a href="{{ item.url | relative_url}}" class="usa-step-indicator__segment-label">Phase {{item.phase}}: {{ item.name }}</a>
       </li>
     
     {% endfor %}
