@@ -38,9 +38,16 @@ module Jekyll
       # post.data["related_posts"] = related_posts(post,site)
       output = [
         "url": post.to_liquid["url"],
-        "phase": post.to_liquid["step"],
-        "name": post.to_liquid["phaseName"],
+        "name": post.to_liquid["name"],
+        "phase": post.to_liquid["phase"],
+        "keyTask": post.to_liquid["keyTask"],
         "objective": post.to_liquid["objective"],
+        "responsibleParty": post.to_liquid["responsibleParty"],
+        "category": post.to_liquid["category"],
+        "inputs": post.to_liquid["inputs"],
+        "outputs": post.to_liquid["outputs"],
+        "stakeholders": post.to_liquid["stakeholders"],
+        "bestPractice": post.to_liquid["bestPractice"],
         "downloads": post.to_liquid["downloads"],
         "activities": post.to_liquid["activities"],
         "documentation": post.to_liquid["documentation"],

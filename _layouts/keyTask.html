@@ -1,0 +1,111 @@
+---
+layout: default
+---
+
+
+{% assign parent = site.pages | where: 'layout', 'm3' | where: 'phase', page.phase | first %}
+
+
+
+<div class="usa-layout-docs usa-section">
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+
+      {% include step-indicator.html %}
+
+      <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
+        
+        <a href="/m3/introduction">M3 Playbook</a> > <a href="{{parentStepURL}}">Phase {{parent.phase}}: {{parent.name}}</a>
+        
+        
+        <h1>{{page.phase}}.{{page.keyTask}} {{page.name}}</h1>
+        <br>
+        <br>
+        Category: {{page.category}}</h1>
+        <br>
+        <br>
+        {% assign prevTask = page.keyTask | minus: 1 %}
+        {% assign prev = site.pages | where: 'phase', page.phase | where: 'keyTask', prevTask | first %}
+        {% if prev %}
+          Previous activity:
+          <a href="/m3/subphase/{{prev.phase}}.{{prev.keyTask}}">
+            {{prev.phase}}.{{prev.keyTask}} {{prev.name}}
+          </a>
+          <br>
+          <br>
+        {% endif %}
+        {% assign nextTask = page.keyTask | plus: 1 %}
+        {% assign next = site.pages | where: 'phase', page.phase | where: 'keyTask', nextTask | first %}
+        {% if next %}
+          Next activity:
+          <a href="/m3/subphase/{{next.phase}}.{{next.keyTask}}">
+            {{next.phase}}.{{next.keyTask}} {{next.name}}
+          </a>
+          <br>
+          <br>
+        {% endif %}
+        <br>
+        <br>
+
+        Objective: {{page.objective}}
+        <br>
+        <br>
+        Downloads:
+        <a href="{{page.downloads.guidance}}"><b>Phase {{phase}} Guidance</b></a>
+        <br>
+        <br>
+        Activities
+        <ol>
+          {% for item in page.activities %}
+          <li>
+            {{ item.text }} <b>({{item.responsibleParty}})</b>
+          </li>
+          {% endfor %}
+        </ol>
+        <br>
+        <br>
+        Inputs
+        <ul>
+          {% for item in page.inputs %}
+          <li>
+            {{ item }}
+          </li>
+          {% endfor %}
+        </ul>
+        <br>
+        <br>
+        Outputs
+        <ul>
+          {% for item in page.outputs %}
+          <li>
+            {{ item }}
+          </li>
+          {% endfor %}
+        </ul>
+        <br>
+        <br>
+        Stakeholders
+        <ul>
+          {% for item in page.stakeholders %}
+          <li>
+            {{ item.text }} <b>({{item.responsibleParty}})</b>
+          </li>
+          {% endfor %}
+        </ul>
+        <br>
+        <br>
+        Best Practice
+        <ul>
+          {% for item in page.bestPractice %}
+          <li>
+            {{ item }}
+          </li>
+          {% endfor %}
+        </ul>
+        <br>
+        <br>
+        
+      </div>
+    </div>
+  </div>
+</div>

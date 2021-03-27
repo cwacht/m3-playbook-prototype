@@ -1,22 +1,18 @@
-{% comment %}
-This appears at the top of the page letting the user know it's an official government website
-{% endcomment %}
 
-{% assign phaseCounter = 0 %}
+
+{% assign phases = site.pages | where: 'layout', 'm3' %}
 
 <div class="usa-step-indicator" aria-label="progress">
   <ol class="usa-step-indicator__segments">
-    {% for item in site.data.m3 %}
+    <li class="usa-step-indicator__segment">
+    <a href="/m3/introduction" class="usa-step-indicator__segment-label">Introduction</a>
+    </li>
+    {% for item in phases %}
       <li class="usa-step-indicator__segment
-        {% if forloop.index == step %}
+        {% if item.phase == page.phase %}
           usa-step-indicator__segment--current
         {% endif %}">
-        {% assign url = "/m3/" | append: item.url | relative_url %}
-        {% if item.isPhase %}
-          {% assign url = "/m3/phase/" | append: phaseCounter | relative_url %}
-          {% assign phaseCounter = phaseCounter | plus: 1 %}
-        {% endif %}
-        <a href="{{ url }}" class="usa-step-indicator__segment-label">{{ item.name }}<span class="usa-sr-only">completed</span></a>
+        <a href="{{ item.url }}" class="usa-step-indicator__segment-label">Phase {{item.phase}}: {{ item.name }}</a>
       </li>
     
     {% endfor %}
