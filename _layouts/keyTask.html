@@ -55,10 +55,11 @@ layout: default
         <br>
         <br>
         Activities
-        <ol>
+        <ol class="usa-process-list">
           {% for item in page.activities %}
-          <li>
-            {{ item.text }} <b>({{item.responsibleParty}})</b>
+          <li class="usa-process-list__item party-{{item.responsibleParty}}">
+            <p class="usa-process-list__heading font-sans-md line-height-sans-1">{{ item.text }}</p>
+            <b>({{item.responsibleParty}})</b>
           </li>
           {% endfor %}
         </ol>

@@ -1,0 +1,54 @@
+
+
+<ul class="usa-card-group">
+  {% for item in list %}
+  <li class="usa-card">
+    <a href="#modal-{{ page.phase }}-{{item.keyTask}}" class="usa-card__container" aria-controls="modal-{{ page.phase }}-{{item.keyTask}}" data-open-modal >
+      <div class="usa-card__body">
+        {{ page.phase }}.{{item.keyTask}} {{ item.name }}
+        <button class="usa-button">View Details</button>
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% for item in list %}
+    
+  <div class="usa-modal " id="modal-{{ page.phase }}-{{item.keyTask}}" aria-labelledby="modal-1-heading" aria-describedby="modal-1-description">
+    <div class="usa-modal__content">
+      <div class="usa-modal__main">
+        
+        {{ page.phase }}.{{item.keyTask}} {{ item.name }}
+        Responsible Party<br>
+        {{ item.responsibleParty }}<br><br>
+        Inputs
+        <ul>
+        {% for input in item.inputs %}
+          <li>{{input}}</li>
+        {% endfor %}
+        </ul>
+        Outputs
+        <ul>
+        {% for output in item.outputs %}
+          <li>{{output}}</li>
+        {% endfor %}
+        </ul>
+        <div class="usa-modal__footer">
+          <ul class="usa-button-group">
+            <li class="usa-button-group__item">
+              <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}" class="usa-button">
+                View Details
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+        <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use xlink:href="/assets/img/sprite.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+{% endfor %}

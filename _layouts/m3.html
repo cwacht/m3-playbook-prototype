@@ -29,51 +29,23 @@ layout: default
         <br>
         Program Management
         {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
-        {% assign programManagement = keyTasks | where: 'category', 'programManagement' %}
-        {{keyTasks | length }}
-        <ul>
-          {% for item in programManagement %}
-          <li>
-            <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}">{{ page.phase }}.{{item.keyTask}} {{ item.name }}</a> ({{ item.responsibleParty }})
-          </li>
-          {% endfor %}
-        </ul>
+        {% assign list = keyTasks | where: 'category', 'programManagement' %}
+        {% include keyTaskList.html %}
         <br>
         <br>
         Workforce, Organization, and Stakeholders 
-        {% assign workforce = keyTasks | where: 'category', 'workforce' %}
-        {{keyTasks | length }}
-        <ul>
-          {% for item in workforce %}
-          <li>
-            <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}">{{ page.phase }}.{{item.keyTask}} {{ item.name }}</a> ({{ item.responsibleParty }})
-          </li>
-          {% endfor %}
-        </ul>
+        {% assign list = keyTasks | where: 'category', 'workforce' %}
+        {% include keyTaskList.html %}
         <br>
         <br>
         Technology 
-        {% assign technology = keyTasks | where: 'category', 'technology' %}
-        {{keyTasks | length }}
-        <ul>
-          {% for item in technology %}
-          <li>
-            <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}">{{ page.phase }}.{{item.keyTask}} {{ item.name }}</a> ({{ item.responsibleParty }})
-          </li>
-          {% endfor %}
-        </ul>
+        {% assign list = keyTasks | where: 'category', 'technology' %}
+        {% include keyTaskList.html %}
         <br>
         <br>
         Process and Service Delivery 
-        {% assign process = keyTasks | where: 'category', 'process' %}
-        {{keyTasks | length }}
-        <ul>
-          {% for item in process %}
-          <li>
-            <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}">{{ page.phase }}.{{item.keyTask}} {{ item.name }}</a> ({{ item.responsibleParty }})
-          </li>
-          {% endfor %}
-        </ul>
+        {% assign list = keyTasks | where: 'category', 'process' %}
+        {% include keyTaskList.html %}
         <br>
         <br>
         Phase {{ page.phase }} Documentation:
