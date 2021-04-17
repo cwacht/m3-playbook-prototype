@@ -6,7 +6,12 @@
 // Example - Override the background image in the hero component using SASS:
 // $theme-hero-image: asset_path("whatever-the-default-is.png");
 
+$theme-color-primary: 'indigo-70';
+$theme-color-primary-darker: 'indigo-60';
+
+@import "_variables";
 @import "uswds";
+@import "_omg";
 
 // Example - Override the background image in the hero component using CSS:
 //.usa-hero {
@@ -22,6 +27,12 @@
 // default mode hide banner
 .usa-banner__content {
   display: hidden;
+}
+.borderBottom{
+  border-bottom: 1px solid grey;
+}
+.textAlignCenter{
+  text-align: center;
 }
 
 [href$=".pdf"]::after {

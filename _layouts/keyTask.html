@@ -7,15 +7,13 @@ layout: default
 
 
 
-<div class="usa-layout-docs usa-section">
+<div class="usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
 
-      {% include step-indicator.html %}
-
-      <div class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
+      <div class="desktop:grid-col-12">
         
-        <a href="{{'/m3/introduction' | relative_url}}">M3 Playbook</a> > <a href="{{parent.url | relative_url}}">Phase {{parent.phase}}: {{parent.name}}</a>
+        <a href="{{'/m3/introduction' | relative_url}}">M3 Playbook</a> > <a href="{{parent.url | relative_url}}">Phase {{parent.phase}}: {{parent.name}}</a> > {{page.phase}}.{{page.keyTask}} {{page.name}}
         
         
         <h1>{{page.phase}}.{{page.keyTask}} {{page.name}}</h1>

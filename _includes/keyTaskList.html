@@ -1,12 +1,21 @@
 
 
-<ul class="usa-card-group">
+<ul class="m3-keyTask-group">
   {% for item in list %}
-  <li class="usa-card">
-    <a href="#modal-{{ page.phase }}-{{item.keyTask}}" class="usa-card__container" aria-controls="modal-{{ page.phase }}-{{item.keyTask}}" data-open-modal >
-      <div class="usa-card__body">
-        {{ page.phase }}.{{item.keyTask}} {{ item.name }}
-        <button class="usa-button">View Details</button>
+  <li class="m3-keyTask">
+    <a href="#modal-{{ page.phase }}-{{item.keyTask}}" class="m3-keyTask-link" aria-controls="modal-{{ page.phase }}-{{item.keyTask}}" data-open-modal >
+      <div class="responsibleParty {{ item.responsibleParty }}"></div>
+      <div class="m3-keyTask-body">
+        
+        <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
+        <div class="keyTask-name">{{ item.name }}</div>
+
+        <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use xlink:href="/img/sprite.svg#person"></use>
+        </svg>
+        Customer
+        
+        <button class="usa-button usa-button--outline">View Details</button>
       </div>
     </a>
   </li>
@@ -15,40 +24,45 @@
 
 {% for item in list %}
     
-  <div class="usa-modal " id="modal-{{ page.phase }}-{{item.keyTask}}" aria-labelledby="modal-1-heading" aria-describedby="modal-1-description">
+  <div class="usa-modal side-modal" id="modal-{{ page.phase }}-{{item.keyTask}}" aria-labelledby="modal-1-heading" aria-describedby="modal-1-description">
     <div class="usa-modal__content">
-      <div class="usa-modal__main">
-        
-        {{ page.phase }}.{{item.keyTask}} {{ item.name }}
-        Responsible Party<br>
-        {{ item.responsibleParty }}<br><br>
-        Inputs
-        <ul>
-        {% for input in item.inputs %}
-          <li>{{input}}</li>
-        {% endfor %}
-        </ul>
-        Outputs
-        <ul>
-        {% for output in item.outputs %}
-          <li>{{output}}</li>
-        {% endfor %}
-        </ul>
-        <div class="usa-modal__footer">
-          <ul class="usa-button-group">
-            <li class="usa-button-group__item">
-              <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}" class="usa-button">
-                View Details
-              </a>
-            </li>
+      <section class="usa-modal__main">
+
+        <section class="borderBottom">
+          <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
+          <h2>{{ item.name }}</h2>
+        </section>
+
+        <section class="borderBottom">
+          <h3>Responsible Party</h3>
+          <div class="m3-tag {{ item.responsibleParty }}">{{ item.responsibleParty }}</div>
+        </section>
+
+        <section class="borderBottom">
+          <h3>Inputs</h3>
+          <ul>
+          {% for input in item.inputs %}
+            <li>{{input}}</li>
+            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'inputs', page.phase %}
+          {% endfor %}
           </ul>
-        </div>
-      </div>
-      <button class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
-        <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-          <use xlink:href="/assets/img/sprite.svg#close"></use>
-        </svg>
-      </button>
+        </section>
+
+        <section>
+          <h3>Outputs</h3>
+          <ul>
+          {% for output in item.outputs %}
+            <li>{{output}}</li>
+          {% endfor %}
+          </ul>
+        </section>
+
+        <section class="textAlignCenter">
+          <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}" class="usa-button">
+            View Details
+          </a>
+        </section>
+
     </div>
   </div>
 {% endfor %}
