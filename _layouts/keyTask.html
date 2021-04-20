@@ -72,25 +72,25 @@ layout: default
           <ul id="keyTaskLegend">
             <li class="m3-tag customer">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "customer" %}"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
               </svg>
               Customer
             </li>
             <li class="m3-tag provider">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "provider" %}"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
               </svg>
               Provider
             </li>
             <li class="m3-tag shared">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "shared" %}"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
               </svg>
               Shared
             </li>
             <li class="m3-tag qsmo">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "qsmo" %}"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
               </svg>
               QSMO
             </li>
@@ -105,7 +105,7 @@ layout: default
               
               <div class="keyTask-responsibleParty">
                 <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
-                  <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
                 </svg>
                 {{item.responsibleParty}}
               </div>
@@ -121,7 +121,7 @@ layout: default
                 <a href="{{template}}">
                   Download Template
                   <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                    <use xlink:href="/img/sprite.svg#file_download"></use>
+                    <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#file_download"></use>
                   </svg>
                 </a>
               </div>
@@ -133,7 +133,7 @@ layout: default
                 <a href="{{example}}">
                   View Example
                   <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                    <use xlink:href="/img/sprite.svg#launch"></use>
+                    <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#launch"></use>
                   </svg>
                 </a>
               </div>
@@ -166,7 +166,7 @@ layout: default
             {% for item in page.stakeholders %}
             <li>
               <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
               </svg>
               {{ item.text }}
             </li>
