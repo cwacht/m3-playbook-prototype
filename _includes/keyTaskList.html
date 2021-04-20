@@ -2,40 +2,72 @@
 
 <ul class="m3-keyTask-group">
   {% for item in list %}
-  <li class="m3-keyTask">
-    <a href="#modal-{{ page.phase }}-{{item.keyTask}}" class="m3-keyTask-link" aria-controls="modal-{{ page.phase }}-{{item.keyTask}}" data-open-modal >
-      <div class="responsibleParty {{ item.responsibleParty }}"></div>
-      <div class="m3-keyTask-body">
-        
-        <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
-        <div class="keyTask-name">{{ item.name }}</div>
+  <li class="m3-keyTask overlayLinkContainer {{ item.responsibleParty }}">
 
-        <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-          <use xlink:href="/img/sprite.svg#person"></use>
-        </svg>
-        Customer
-        
-        <button class="usa-button usa-button--outline">View Details</button>
-      </div>
+    <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
+
+    <a href="#modal-{{ page.phase }}-{{item.keyTask}}" aria-controls="modal-{{ page.phase }}-{{item.keyTask}}" data-open-modal class="keyTask-name overlayLink">
+      <div class="keyTask-name">{{ item.name }}</div>
     </a>
+    
+    <div class="keyTask-responsibleParty">
+      <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
+        <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+      </svg>
+      {{ item.responsibleParty }}
+    </div>
+
+    <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}" class="usa-button usa-button--outline">
+      View Details
+    </a>
+
   </li>
+
   {% endfor %}
 </ul>
 
 {% for item in list %}
+  {% assign workstream = "" %}
+  {%- case item.category -%}
+    {%- when "programManagement" -%}
+      {% assign workstream = "Program Management" %}
+    {%- when "workforce" -%}
+      {% assign workstream = "Workforce Organization & Stakeholders" %}
+    {%- when "technology" -%}
+      {% assign workstream = "Technology" %}
+    {%- when "process" -%}
+      {% assign workstream = "Process & Service Delivery" %}
+  {%- endcase -%}
+  {% assign party = "" %}
+  {%- case item.responsibleParty -%}
+    {%- when "provider" -%}
+      {% assign party = "Provider" %}
+    {%- when "customer" -%}
+      {% assign party = "Customer" %}
+    {%- when "shared" -%}
+      {% assign party = "Shared" %}
+    {%- when "qsmo" -%}
+      {% assign party = "QSMO" %}
+  {%- endcase -%}
     
-  <div class="usa-modal side-modal" id="modal-{{ page.phase }}-{{item.keyTask}}" aria-labelledby="modal-1-heading" aria-describedby="modal-1-description">
+  <div class="usa-modal m3-modal" id="modal-{{ page.phase }}-{{item.keyTask}}" aria-labelledby="modal-1-heading" aria-describedby="modal-1-description">
     <div class="usa-modal__content">
       <section class="usa-modal__main">
 
-        <section class="borderBottom">
+        <section class="m3-modal-header bg-{{item.category}}">
+            <svg aria-hidden="true" focusable="false" role="img">
+              <use xlink:href="{{site.baseurl}}/img/icon-{{item.category}}.svg#icon-{{item.category}}"></use>
+            </svg>
           <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
           <h2>{{ item.name }}</h2>
         </section>
 
         <section class="borderBottom">
           <h3>Responsible Party</h3>
-          <div class="m3-tag {{ item.responsibleParty }}">{{ item.responsibleParty }}</div>
+          <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
+            <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+          </svg>
+          {{ party }}
         </section>
 
         <section class="borderBottom">

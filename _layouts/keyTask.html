@@ -5,6 +5,17 @@ layout: default
 
 {% assign parent = site.pages | where: 'layout', 'm3' | where: 'phase', page.phase | first %}
 
+{% assign workstream = "" %}
+{%- case page.category -%}
+  {%- when "programManagement" -%}
+    {% assign workstream = "Program Management" %}
+  {%- when "workforce" -%}
+    {% assign workstream = "Workforce Organization & Stakeholders" %}
+  {%- when "technology" -%}
+    {% assign workstream = "Technology" %}
+  {%- when "process" -%}
+    {% assign workstream = "Process & Service Delivery" %}
+{%- endcase -%}
 
 
 <div class="usa-section">
@@ -15,13 +26,26 @@ layout: default
         
         <a href="{{'/m3/introduction' | relative_url}}">M3 Playbook</a> > <a href="{{parent.url | relative_url}}">Phase {{parent.phase}}: {{parent.name}}</a> > {{page.phase}}.{{page.keyTask}} {{page.name}}
         
-        
         <h1>{{page.phase}}.{{page.keyTask}} {{page.name}}</h1>
-        <br>
-        <br>
-        Category: {{page.category}}</h1>
-        <br>
-        <br>
+      </div>
+
+      <div class="desktop:grid-col-9">
+
+        <div class="m3-summary-box-label bg-{{page.category}}">
+          <svg aria-hidden="true" focusable="false" role="img">
+            <use xlink:href="{{site.baseurl}}/img/icon-{{page.category}}.svg#icon-{{page.category}}"></use>
+          </svg>
+          {{workstream}}
+        </div>
+        <div class="m3-summary-box usa-summary-box with-label" role="complementary">
+          <div class="usa-summary-box__body">
+            <h3 class="usa-summary-box__heading">Objective</h3>
+            <div class="usa-summary-box__text">
+              <p>{{page.objective}}</p>
+            </div>
+          </div>
+        </div>
+        
         {% assign prevTask = page.keyTask | minus: 1 %}
         {% assign prev = site.pages | where: 'phase', page.phase | where: 'keyTask', prevTask | first %}
         {% if prev %}
@@ -42,68 +66,129 @@ layout: default
           <br>
           <br>
         {% endif %}
-        <br>
-        <br>
 
-        Objective: {{page.objective}}
-        <br>
-        <br>
-        Downloads:
-        <a href="{{page.downloads.guidance}}"><b>Phase {{phase}} Guidance</b></a>
-        <br>
-        <br>
-        Activities
-        <ol class="usa-process-list">
+        <div id="keyTaskHeader">
+          <h2>Task Activities</h2>
+          <ul id="keyTaskLegend">
+            <li class="m3-tag customer">
+              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "customer" %}"></use>
+              </svg>
+              Customer
+            </li>
+            <li class="m3-tag provider">
+              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "provider" %}"></use>
+              </svg>
+              Provider
+            </li>
+            <li class="m3-tag shared">
+              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "shared" %}"></use>
+              </svg>
+              Shared
+            </li>
+            <li class="m3-tag qsmo">
+              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = "qsmo" %}"></use>
+              </svg>
+              QSMO
+            </li>
+          </ul>
+        </div>
+
+        <ol class="m3-process-list usa-process-list">
           {% for item in page.activities %}
           <li class="usa-process-list__item party-{{item.responsibleParty}}">
-            <p class="usa-process-list__heading font-sans-md line-height-sans-1">{{ item.text }}</p>
-            <b>({{item.responsibleParty}})</b>
+            <div class="m3-taskActivity">
+              <p class="usa-process-list__heading font-sans-md line-height-sans-1 keyTask-name">{{ item.text }}</p>
+              
+              <div class="keyTask-responsibleParty">
+                <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+                </svg>
+                {{item.responsibleParty}}
+              </div>
+              
+              <div class="keyTask-output">
+                Targeted Output:<br>
+                {{item.output}} 
+              </div>
+
+              {% if item.template %}
+              <div class="keyTask-template">
+                Template:<br>
+                <a href="{{template}}">
+                  Download Template
+                  <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                    <use xlink:href="/img/sprite.svg#file_download"></use>
+                  </svg>
+                </a>
+              </div>
+              {% endif %}
+
+              {% if item.example %}
+              <div class="keyTask-example">
+                Artifacts:<br>
+                <a href="{{example}}">
+                  View Example
+                  <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                    <use xlink:href="/img/sprite.svg#launch"></use>
+                  </svg>
+                </a>
+              </div>
+              {% endif %}
+            </div>
           </li>
+
           {% endfor %}
         </ol>
-        <br>
-        <br>
-        Inputs
-        <ul>
-          {% for item in page.inputs %}
-          <li>
-            {{ item }}
-          </li>
-          {% endfor %}
-        </ul>
-        <br>
-        <br>
-        Outputs
-        <ul>
-          {% for item in page.outputs %}
-          <li>
-            {{ item }}
-          </li>
-          {% endfor %}
-        </ul>
-        <br>
-        <br>
-        Stakeholders
-        <ul>
-          {% for item in page.stakeholders %}
-          <li>
-            {{ item.text }} <b>({{item.responsibleParty}})</b>
-          </li>
-          {% endfor %}
-        </ul>
-        <br>
-        <br>
-        Best Practice
-        <ul>
-          {% for item in page.bestPractice %}
-          <li>
-            {{ item }}
-          </li>
-          {% endfor %}
-        </ul>
-        <br>
-        <br>
-        
+
+        <div class="m3-summary-box usa-summary-box" role="complementary">
+          <div class="usa-summary-box__body">
+            <h3 class="usa-summary-box__heading">Best Practice</h3>
+            <div class="usa-summary-box__text">
+              <ul>
+                {% for item in page.bestPractice  %}
+                <li>
+                  {{ item }}
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="desktop:grid-col-3">
+        <section id="documentation">
+          <h2>Stakeholders</h2>
+          <ul class="stakeholders">
+            {% for item in page.stakeholders %}
+            <li>
+              <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/sprite.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+              </svg>
+              {{ item.text }}
+            </li>
+            {% endfor %}
+          </ul>
+          <h2>Inputs</h2>
+          <ul>
+            {% for item in page.inputs %}
+            <li>
+              {{ item }}
+            </li>
+            {% endfor %}
+          </ul>
+          <h2>Outputs</h2>
+          <ul>
+            {% for item in page.outputs %}
+            <li>
+              {{ item }}
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
       </div>
     </div>
   </div>
