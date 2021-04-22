@@ -1,0 +1,81 @@
+
+#keyTaskHeader {
+  h2 {
+    display: inline-block;
+  }
+
+  ul {
+    float: right;
+    margin: 1.5em 0;
+  }
+}
+
+.m3-taskActivity{
+  display:grid;
+  grid-template:
+    [row1-start] "name name name name" auto [row1-end]
+    [row2-start] "responsibleParty output template example" auto [row2-end]
+    / 140px auto 200px 140px;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid lightgrey;
+
+  .keyTask-output{
+    grid-area:output;
+  }
+  .keyTask-name{
+    grid-area:name;
+    margin-bottom: 0.5em;
+  }
+  .keyTask-responsibleParty{
+    grid-area:responsibleParty;
+  }
+  .keyTask-output{
+    grid-area:output;
+  }
+  .keyTask-template{
+    grid-area:template;
+  }
+  .keyTask-example{
+    grid-area:example;
+  }
+}
+
+
+.m3-process-list{
+  .usa-process-list__item {
+    max-width: none;
+    
+    &::before {
+      border: none;
+      color: white;
+      font-size: 1em;
+    }
+    &.party-customer::before {
+      background-color: $color-customer;
+    }
+    &.party-provider::before {
+      background-color: $color-provider;
+    }
+    &.party-shared::before {
+      background-color: $color-shared;
+    }
+    &.party-qsmo::before {
+      background-color: $color-qsmo;
+    }
+  }
+}
+
+
+#documentation{
+  background: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px #dfe1e2;
+  padding: 1em;
+  ul {
+    padding-left: 0;
+    list-style-position: inside;
+    &.stakeholders{
+      list-style: none;
+    }
+  }
+}

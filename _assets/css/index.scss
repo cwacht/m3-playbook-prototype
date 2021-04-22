@@ -7,14 +7,21 @@
 // $theme-hero-image: asset_path("whatever-the-default-is.png");
 
 $theme-color-primary: 'indigo-70';
-$theme-color-primary-darker: 'indigo-60';
+$theme-color-primary-darker: 'indigo-cool-70';
 
 $theme-process-list-counter-size: 3;
+
+$theme-grid-container-max-width:    'widescreen';
+$theme-site-max-width:              'widescreen';
+$theme-site-margins-breakpoint:     'widescreen';
+$theme-header-max-width:            'widescreen';
 
 @import "_variables";
 @import "uswds";
 @import "_utilities";
-@import "_omg";
+@import "_phase-page";
+@import "_keyTask-page";
+@import "_intro-page";
 
 // Example - Override the background image in the hero component using CSS:
 //.usa-hero {

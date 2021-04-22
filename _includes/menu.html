@@ -8,10 +8,17 @@ where we provide an easy way to manage your navigation system
     {% include logo.html %}
     <button class="usa-menu-btn">Menu</button>
   </div>
-  <nav role="navigation" class="usa-nav">
+  <nav role="navigation" class="usa-nav m3-nav">
     <div class="usa-nav__inner">
       <button class="usa-nav__close">{% asset close.svg alt="close" %}</button>
       <ul class="usa-nav__primary usa-accordion">
+
+        <li class="usa-nav__primary-item">
+          <a class="usa-nav__link m3-intro-menuLink" href="javascript:void(0)"><span>
+            <img src="{{site.baseurl}}/img/m3-logo.svg" alt="M3 Logo">
+            M<sup>3</sup> Playbook
+          </span></a>
+        </li>
 
 
         {% assign phases = site.pages | where: 'layout', 'm3' %}

@@ -1,4 +1,47 @@
 
+.m3-nav {
+  background: #0b0083;
+  .usa-nav__primary a:not(.usa-button), .usa-nav__primary button {
+    color:white;
+    &:hover{
+      background-color: #0b0083;
+    }
+  }
+  .usa-nav__primary button[aria-expanded="true"] {
+    background-color: #0b0083;
+  }
+  .usa-nav__primary button[aria-expanded="false"] {
+    background-image: url(../img/usa-icons-bg/expand_more--white.svg), linear-gradient(transparent, transparent);
+  }
+  .usa-nav__submenu {
+    background-color: #0b0083;
+    &:before, &:after{
+      background-color: #0b0083;
+    }
+  }
+  .usa-nav__primary-item > .usa-current::after, .usa-nav__primary-item > .usa-nav__link:hover::after {
+    background-color: white;
+}
+}
+.usa-header + .usa-section, .usa-header + main {
+  border-top: 1px solid #0b0083;
+}
+
+a.usa-nav__link.m3-intro-menuLink {
+  font-size: 1.3em;
+  padding: 3px 16px;
+  line-height: 2em;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    height: 1.5em;
+  }
+}
+
+
 .m3-tag {
   display: inline-block;
   background: #f8f8f8;
@@ -57,26 +100,36 @@
     }
   }
   .keyTaskCategoryHeading{
+    display: flex;
+    align-items: flex-start;
     color: white;
     border-radius: 10px;
-    padding: 5px 0px 5px 60px;
+    padding: 0.25em 1.5em;
+    margin-bottom: 0.3em;
+
+    svg {
+      stroke: white;
+      stroke-width: 3px;
+      width: 20px;
+      height: 20px;
+      margin-right: 1em;
+    }
   }
 }
 
 .m3-keyTask-group{
   display: flex;
   flex-direction: column;
-  // align-items: stretch;
   margin-bottom: 0;
   margin-top: 0;
   list-style-type: none;
-  // padding-left: 0;
   position: relative;
+  padding-left: 1.5em;
+
   &:before {
     content: "";
     width: 0.5em;
     height: 100%;
-    background: chartreuse;
     position: absolute;
     left: 0;
     opacity: 0.2;
@@ -85,43 +138,58 @@
 }
 .m3-keyTask{
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3em;
   display:grid;
   grid-template:
     [row1-start] "id name button" auto [row1-end]
     [row2-start] "id responsibleParty button" 25px [row2-end]
     / 50px auto 140px;
+  border: 1px solid #dfe1e2;
+  border-radius: 0.5em;
+  padding-left: 0.5em;
+  transition: background 0.4s, box-shadow 0.4s, border 0.4s;
+  padding: 0.5em 1em;
+
+  &:last-of-type{
+    margin-bottom: 0;
+  }
+  
+  &:hover{
+    background: #f8f8f8;
+    border-color: #f8f8f8;
+    box-shadow: 0 3px 5px #dfe1e2;
+  }
 
   &:before {
     content:"";
     display: block;
-    width: 0.5em;
+    width: 0.3em;
     border-radius: 0.5em 0 0 0.5em;
     transition: box-shadow 0.4s;
     position: absolute;
-    top: -2px;
-    left: -2px;
+    top: -1px;
+    left: -1px;
     height: 100%;
-    border: 2px solid;
+    border: 1px solid;
     box-sizing: content-box;
   }
     
-    &.customer:before {
-      background: $color-customer;
-      border-color: $color-customer;
-    }
-    &.provider:before {
-      background: $color-provider;
-      border-color: $color-provider;
-    }
-    &.shared:before {
-      background: $color-shared;
-      border-color: $color-shared;
-    }
-    &.qsmo:before {
-      background: $color-qsmo;
-      border-color: $color-qsmo;
-    }
+  &.customer:before {
+    background: $color-customer;
+    border-color: $color-customer;
+  }
+  &.provider:before {
+    background: $color-provider;
+    border-color: $color-provider;
+  }
+  &.shared:before {
+    background: $color-shared;
+    border-color: $color-shared;
+  }
+  &.qsmo:before {
+    background: $color-qsmo;
+    border-color: $color-qsmo;
+  }
   
   .keyTask-id{
     grid-area:id;
@@ -143,20 +211,6 @@
     justify-self:center;
     align-self:center;
   }
-}
-.m3-keyTask{
-  &:hover{
-    background: #f8f8f8;
-    border-color: #f8f8f8;
-    box-shadow: 0 3px 5px #dfe1e2;
-  }
-}
-
-.m3-keyTask{
-  border: 2px solid #dfe1e2;
-  border-radius: 0.5em;
-  padding-left: 0.5em;
-  transition: background 0.4s, box-shadow 0.4s, border 0.4s;
 }
 
 #keyTaskHeader {
@@ -243,6 +297,7 @@
     &::before {
       border: none;
       color: white;
+      font-size: 1em;
     }
     &.party-customer::before {
       background-color: $color-customer;
