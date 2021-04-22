@@ -46,19 +46,19 @@ $theme-header-max-width:            'widescreen';
 }
 
 [href$=".pdf"]::after {
-  content: '  PDF';
+  content: '  (PDF)';
   color: red;
 }
 [href$=".docx"]::after {
-  content: '  DOCX';
+  content: '  (DOCX)';
   color: blue;
 }
 [href$=".pptx"]::after {
-  content: '  PPTX';
+  content: '  (PPTX)';
   color: orange;
 }
 [href$=".xlsx"]::after {
-  content: '  XLSX';
+  content: '  (XLSX)';
   color: green;
 }
 
