@@ -9,6 +9,13 @@
     margin: 1.5em 0;
   }
 }
+.prevnext{
+  display: flex;
+  justify-content: space-between;
+}
+.next{
+  margin-left: auto;
+}
 
 .m3-taskActivity{
   display:grid;
@@ -44,23 +51,60 @@
 .m3-process-list{
   .usa-process-list__item {
     max-width: none;
-    
+    max-height: 200px;
+    transition: all 0.5s ease;
     &::before {
       border: none;
       color: white;
       font-size: 1em;
+      content: attr(data-number);
     }
-    &.party-customer::before {
+    &[data-label~="customer"]::before {
       background-color: $color-customer;
     }
-    &.party-provider::before {
+    &[data-label~="provider"]::before {
       background-color: $color-provider;
     }
-    &.party-shared::before {
+    &[data-label~="qsmo"]::before {
+      background-color: $color-qsmo;
+    }
+    &[data-label~="shared"]::before {
       background-color: $color-shared;
     }
-    &.party-qsmo::before {
-      background-color: $color-qsmo;
+    &.hidden{
+      display:none;
+    }
+    &[aria-hidden="true"]{
+      max-height: 0;
+      opacity: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+.m3-tag[aria-selected="true"]{
+  color: white;
+  &.customer{
+    background-color: $color-customer;
+    .usa-icon {
+      fill: white;
+    }
+  }
+  &.provider{
+    background-color: $color-provider;
+    .usa-icon {
+      stroke: white;
+    }
+  }
+  &.qsmo{
+    background-color: $color-qsmo;
+    .usa-icon {
+      fill: white;
+    }
+  }
+  &.shared{
+    background-color: $color-shared;
+    .usa-icon {
+      fill: white;
     }
   }
 }
@@ -74,8 +118,36 @@
   ul {
     padding-left: 0;
     list-style-position: inside;
-    &.stakeholders{
+  }
+  .stakeholders{
+    ul{
       list-style: none;
+      li::before{
+        content: "\2022";
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+      }
+    }
+    .customerStakeholders{
+      li::before{
+        color: $color-customer;
+      }
+    }
+    .providerStakeholders{
+      li::before{
+        color: $color-provider;
+      }
+    }
+    .qsmoStakeholders{
+      li::before{
+        color: $color-qsmo;
+      }
+    }
+    .sharedStakeholders{
+      li::before{
+        color: $color-shared;
+      }
     }
   }
 }

@@ -21,83 +21,84 @@ layout: default
             </div>
           </div>
         </div>
-        
-        <div id="keyTaskHeader">
-          <h2>Key Tasks</h2>
-          <ul id="keyTaskLegend">
-            <li class="m3-tag customer">
-              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
+        <div class="keyTasks show-customer show-provider show-QSMO show-shared">
+          <div id="keyTaskHeader">
+            <h2>Key Tasks</h2>
+            <ul id="keyTaskLegend">
+              <li class="m3-tag customer" onclick="this.closest('.keyTasks').classList.toggle('show-customer')">
+                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
+                </svg>
+                Customer
+              </li>
+              <li class="m3-tag provider" onclick="this.closest('.keyTasks').classList.toggle('show-provider')">
+                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
+                </svg>
+                Provider
+              </li>
+              <li class="m3-tag shared" onclick="this.closest('.keyTasks').classList.toggle('show-shared')">
+                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
+                </svg>
+                Shared
+              </li>
+              <li class="m3-tag qsmo" onclick="this.closest('.keyTasks').classList.toggle('show-qsmo')">
+                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
+                </svg>
+                QSMO
+              </li>
+            </ul>
+          </div>
+          <section class="keyTaskCategory programManagement">
+            <h3 id="" class="keyTaskCategoryHeading">
+              <svg aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/icon-programManagement.svg#icon-programManagement"></use>
               </svg>
-              Customer
-            </li>
-            <li class="m3-tag provider">
-              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
+              Program Management
+            </h3>
+            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
+            {% assign list = keyTasks | where: 'category', 'programManagement' %}
+            {% include keyTaskList.html %}
+          </section>
+          
+          <section class="keyTaskCategory workforce">
+            <h3 id="" class="keyTaskCategoryHeading">
+              <svg aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/icon-workforce.svg#icon-workforce"></use>
               </svg>
-              Provider
-            </li>
-            <li class="m3-tag shared">
-              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
+              Workforce, Organization, and Stakeholders
+            </h3>
+            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
+            {% assign list = keyTasks | where: 'category', 'workforce' %}
+            {% include keyTaskList.html %}
+          </section>
+          
+          <section class="keyTaskCategory technology">
+            <h3 id="" class="keyTaskCategoryHeading">
+              <svg aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/icon-technology.svg#icon-technology"></use>
               </svg>
-              Shared
-            </li>
-            <li class="m3-tag qsmo">
-              <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
+              Technology
+            </h3>
+            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
+            {% assign list = keyTasks | where: 'category', 'technology' %}
+            {% include keyTaskList.html %}
+          </section>
+          
+          <section class="keyTaskCategory process">
+            <h3 id="" class="keyTaskCategoryHeading">
+              <svg aria-hidden="true" focusable="false" role="img">
+                <use xlink:href="{{site.baseurl}}/img/icon-process.svg#icon-process"></use>
               </svg>
-              QSMO
-            </li>
-          </ul>
+              Process and Service Delivery
+            </h3>
+            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
+            {% assign list = keyTasks | where: 'category', 'process' %}
+            {% include keyTaskList.html %}
+          </section>
         </div>
-        <section class="keyTaskCategory programManagement">
-          <h3 id="" class="keyTaskCategoryHeading">
-            <svg aria-hidden="true" focusable="false" role="img">
-              <use xlink:href="{{site.baseurl}}/img/icon-programManagement.svg#icon-programManagement"></use>
-            </svg>
-            Program Management
-          </h3>
-          {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
-          {% assign list = keyTasks | where: 'category', 'programManagement' %}
-          {% include keyTaskList.html %}
-        </section>
-        
-        <section class="keyTaskCategory workforce">
-          <h3 id="" class="keyTaskCategoryHeading">
-            <svg aria-hidden="true" focusable="false" role="img">
-              <use xlink:href="{{site.baseurl}}/img/icon-workforce.svg#icon-workforce"></use>
-            </svg>
-            Workforce, Organization, and Stakeholders
-          </h3>
-          {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
-          {% assign list = keyTasks | where: 'category', 'workforce' %}
-          {% include keyTaskList.html %}
-        </section>
-        
-        <section class="keyTaskCategory technology">
-          <h3 id="" class="keyTaskCategoryHeading">
-            <svg aria-hidden="true" focusable="false" role="img">
-              <use xlink:href="{{site.baseurl}}/img/icon-technology.svg#icon-technology"></use>
-            </svg>
-            Technology
-          </h3>
-          {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
-          {% assign list = keyTasks | where: 'category', 'technology' %}
-          {% include keyTaskList.html %}
-        </section>
-        
-        <section class="keyTaskCategory process">
-          <h3 id="" class="keyTaskCategoryHeading">
-            <svg aria-hidden="true" focusable="false" role="img">
-              <use xlink:href="{{site.baseurl}}/img/icon-process.svg#icon-process"></use>
-            </svg>
-            Process and Service Delivery
-          </h3>
-          {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
-          {% assign list = keyTasks | where: 'category', 'process' %}
-          {% include keyTaskList.html %}
-        </section>
 
         <div class="m3-summary-box usa-summary-box" role="complementary">
           <div class="usa-summary-box__body">
