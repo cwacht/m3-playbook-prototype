@@ -2,7 +2,14 @@
 layout: default
 ---
 
-<div class="usa-section">
+{% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
+
+{% assign customerTasks = keyTasks | where: 'responsibleParty', "customer" %}
+{% assign providerTasks = keyTasks | where: 'responsibleParty', "provider" %}
+{% assign qsmoTasks = keyTasks | where: 'responsibleParty', "qsmo" %}
+{% assign sumTasks = customerTasks.size | plus: providerTasks.size | plus: qsmoTasks.size %}
+
+<div class="usa-section m3-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
 
@@ -11,7 +18,7 @@ layout: default
         <h1>Phase {{page.phase}}: {{page.name}}</h1>
       </div>
 
-      <div class="desktop:grid-col-9">
+      <div class="desktop:grid-col-8">
 
         <div class="m3-summary-box usa-summary-box" role="complementary">
           <div class="usa-summary-box__body">
@@ -21,34 +28,55 @@ layout: default
             </div>
           </div>
         </div>
-        <div class="keyTasks show-customer show-provider show-QSMO show-shared">
+        <div class="keyTasks filterlist" data-items=".m3-keyTask" data-filters=".m3-tag">
           <div id="keyTaskHeader">
             <h2>Key Tasks</h2>
+            <label for="keyTaskLegend">Filter Responsible Roles:</label>
             <ul id="keyTaskLegend">
-              <li class="m3-tag customer" onclick="this.closest('.keyTasks').classList.toggle('show-customer')">
-                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
-                </svg>
-                Customer
-              </li>
-              <li class="m3-tag provider" onclick="this.closest('.keyTasks').classList.toggle('show-provider')">
+              
+              {% if customerTasks.size > 0 %}
+                <li>
+                  <button class="usa-button m3-tag customer" data-filter="customer">
+                    <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                      <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
+                    </svg>
+                    Customer
+                  </button>
+                </li>
+              {% endif %}
+              
+              {% if providerTasks.size > 0 %}
+              <li>
+                <button class="usa-button m3-tag provider" data-filter="provider">
                 <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
                 </svg>
                 Provider
+              </button>
               </li>
-              <li class="m3-tag shared" onclick="this.closest('.keyTasks').classList.toggle('show-shared')">
-                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
-                </svg>
-                Shared
-              </li>
-              <li class="m3-tag qsmo" onclick="this.closest('.keyTasks').classList.toggle('show-qsmo')">
+              {% endif %}
+              
+              {% if qsmoTasks.size > 0 %}
+              <li>
+                <button class="usa-button m3-tag qsmo" data-filter="qsmo">
                 <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
                 </svg>
                 QSMO
+              </button>
               </li>
+              {% endif %}
+              
+              {% if sumTasks > keyTasks.size %}
+              <li>
+                <button class="usa-button m3-tag shared" data-filter="shared">
+                <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                  <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
+                </svg>
+                Shared
+              </button>
+              </li>
+              {% endif %}
             </ul>
           </div>
           <section class="keyTaskCategory programManagement">
@@ -58,7 +86,6 @@ layout: default
               </svg>
               Program Management
             </h3>
-            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
             {% assign list = keyTasks | where: 'category', 'programManagement' %}
             {% include keyTaskList.html %}
           </section>
@@ -70,7 +97,6 @@ layout: default
               </svg>
               Workforce, Organization, and Stakeholders
             </h3>
-            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
             {% assign list = keyTasks | where: 'category', 'workforce' %}
             {% include keyTaskList.html %}
           </section>
@@ -82,7 +108,6 @@ layout: default
               </svg>
               Technology
             </h3>
-            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
             {% assign list = keyTasks | where: 'category', 'technology' %}
             {% include keyTaskList.html %}
           </section>
@@ -94,7 +119,6 @@ layout: default
               </svg>
               Process and Service Delivery
             </h3>
-            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'phase', page.phase %}
             {% assign list = keyTasks | where: 'category', 'process' %}
             {% include keyTaskList.html %}
           </section>
@@ -120,14 +144,16 @@ layout: default
         </div>
 
       </div>
-      <div class="desktop:grid-col-3">
+      <div class="desktop:grid-col-3 grid-offset-1">
 
         <section id="documentation">
           <h2>Phase {{ page.phase }} Artifact Samples:	</h2>
           <a href="https://community.max.gov/pages/viewpage.action?spaceKey=GSA&title=M3+Artifact+Samples">M3 Artifact Samples MAX Page</a>
           <h2>Phase {{ page.phase }} Documentation</h2>
           <ul>
-            {% for item in page.documentation  %}
+            {% if page.documentation %}
+            {% assign documentationByName = page.documentation | sort: "name" %}
+            {% for item in documentationByName %}
             <li>
               {% if item.url %}
               <a href="{{site.baseurl}}/m3/{{ item.url }}">{{ item.name }}</a>
@@ -136,6 +162,8 @@ layout: default
               {% endif %}
             </li>
             {% endfor %}
+              
+            {% endif %}
           </ul>
         </section>
         

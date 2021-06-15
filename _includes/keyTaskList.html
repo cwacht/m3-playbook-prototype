@@ -2,7 +2,12 @@
 
 <ul class="m3-keyTask-group">
   {% for item in list %}
-  <li class="m3-keyTask overlayLinkContainer {{ item.responsibleParty }}">
+  {% if item.responsibleParty.first and item.responsibleParty.size > 1 %}
+    {% assign responsibleParty = "shared" %}
+  {% else %}
+    {% assign responsibleParty = item.responsibleParty %}
+  {% endif %}
+  <li class="m3-keyTask overlayLinkContainer" data-label='{{responsibleParty}} {% if responsibleParty == "shared" -%}{{item.responsibleParty | join: " " }}{%- endif -%}'>
 
     <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
 
@@ -75,7 +80,7 @@
           <ul>
           {% for input in item.inputs %}
             <li>{{input}}</li>
-            {% assign keyTasks = site.pages | where: 'layout', 'keyTask' | where: 'inputs', page.phase %}
+            
           {% endfor %}
           </ul>
         </section>

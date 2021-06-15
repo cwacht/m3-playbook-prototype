@@ -80,17 +80,7 @@ a.usa-nav__link.m3-intro-menuLink {
     }
   }
 }
-.keyTasks{
-  .m3-keyTask{
-    display: none;
-  }
-  &.show-customer .m3-keyTask.customer{
-    display: grid;
-  }
-  &.show-shared .m3-keyTask.shared{
-    display: grid;
-  }
-}
+
 .keyTaskCategory{
   &.programManagement{
     .keyTaskCategoryHeading, .m3-keyTask-group:before{
@@ -160,7 +150,8 @@ a.usa-nav__link.m3-intro-menuLink {
   border: 1px solid #dfe1e2;
   border-radius: 0.5em;
   padding-left: 0.5em;
-  transition: background 0.4s, box-shadow 0.4s, border 0.4s;
+  max-height: 70px;
+  transition: all 0.5s ease;
   padding: 0.5em 1em;
 
   &:last-of-type{
@@ -187,21 +178,31 @@ a.usa-nav__link.m3-intro-menuLink {
     box-sizing: content-box;
   }
     
-  &.customer:before {
+  &[data-label~="customer"]::before {
     background: $color-customer;
     border-color: $color-customer;
   }
-  &.provider:before {
+  &[data-label~="provider"]::before {
     background: $color-provider;
     border-color: $color-provider;
   }
-  &.shared:before {
+  &[data-label~="qsmo"]::before {
+    background: $color-qsmo;
+    border-color: $color-qsmo;
+  }
+  &[data-label~="shared"]::before {
     background: $color-shared;
     border-color: $color-shared;
   }
-  &.qsmo:before {
-    background: $color-qsmo;
-    border-color: $color-qsmo;
+  &.hidden{
+    display:none;
+  }
+  &[aria-hidden="true"]{
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
   }
   
   .keyTask-id{
@@ -226,46 +227,6 @@ a.usa-nav__link.m3-intro-menuLink {
   }
 }
 
-#keyTaskHeader {
-  h2 {
-    display: inline-block;
-  }
-
-  ul {
-    float: right;
-    margin: 1.5em 0;
-  }
-}
-
-.m3-taskActivity{
-  display:grid;
-  grid-template:
-    [row1-start] "name name name name" auto [row1-end]
-    [row2-start] "responsibleParty output template example" auto [row2-end]
-    / 140px auto 200px 140px;
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid lightgrey;
-
-  .keyTask-output{
-    grid-area:output;
-  }
-  .keyTask-name{
-    grid-area:name;
-    margin-bottom: 0.5em;
-  }
-  .keyTask-responsibleParty{
-    grid-area:responsibleParty;
-  }
-  .keyTask-output{
-    grid-area:output;
-  }
-  .keyTask-template{
-    grid-area:template;
-  }
-  .keyTask-example{
-    grid-area:example;
-  }
-}
 
 
 .m3-modal{

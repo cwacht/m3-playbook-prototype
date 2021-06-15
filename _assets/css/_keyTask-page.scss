@@ -1,12 +1,16 @@
 
 #keyTaskHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   h2 {
-    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 0;
   }
-
   ul {
-    float: right;
-    margin: 1.5em 0;
+    padding-left: 1em;
+    margin: 0;
   }
 }
 .prevnext{
@@ -20,14 +24,37 @@
 .m3-taskActivity{
   display:grid;
   grid-template:
-    [row1-start] "name name name name" auto [row1-end]
-    [row2-start] "responsibleParty output template example" auto [row2-end]
-    / 140px auto 200px 140px;
+    [row1-start] "responsibleParty name" auto [row1-end]
+    [row2-start] "responsibleParty output" auto [row2-end]
+    / 100px auto;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid lightgrey;
+  
 
   .keyTask-output{
     grid-area:output;
+    border-bottom: 1px solid lightgrey;
+    display: grid;
+    grid-template:
+    [row1-start] "label icons" auto [row1-end]
+    [row2-start] "name icons" auto [row2-end]
+    / auto 1fr;
+  }
+
+  .keyTask-output-label{
+    grid-area:label;
+  }
+  .keyTask-output-name{
+    grid-area:name;
+  }
+  .keyTask-output-icons{
+    grid-area:icons;
+    a{
+      display: inline-block;
+    }
+    .usa-icon{
+      width: 2.5em;
+      height: 2.5em;
+    }
   }
   .keyTask-name{
     grid-area:name;
@@ -35,15 +62,6 @@
   }
   .keyTask-responsibleParty{
     grid-area:responsibleParty;
-  }
-  .keyTask-output{
-    grid-area:output;
-  }
-  .keyTask-template{
-    grid-area:template;
-  }
-  .keyTask-example{
-    grid-area:example;
   }
 }
 
@@ -108,7 +126,29 @@
     }
   }
 }
-
+.best-practices{
+  h3{
+    background: #060183;
+    color: white;
+    padding: 1em;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    background-color: #f8f8f8;
+    background-image: url(/img/m3-logo.svg);
+    background-repeat: no-repeat;
+    background-size: 2em;
+    background-position: 1em;
+    margin: 0.5em 0;
+    border: 1px solid #dddee0;
+    padding: 1em 1em 1em 4em;
+    border-radius: 5px;
+  }
+}
 
 #documentation{
   background: #f8f8f8;
@@ -149,5 +189,15 @@
         color: $color-shared;
       }
     }
+  }
+  .linkedOutput{
+    background: #060183;
+    display: inline-block;
+    border-radius: 1em;
+    padding: 0 0.5em;
+    height: 1.3em;
+    color: white;
+    text-decoration: none;
+    text-align: center;
   }
 }
