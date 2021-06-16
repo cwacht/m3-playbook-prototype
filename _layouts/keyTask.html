@@ -96,7 +96,7 @@ layout: default
             
             {% if customerActivities.size > 0 %}
               <li>
-                <button class="usa-button m3-tag customer" data-filter="customer" aria-controls="keyTasks" aria-role="option" aria-selected="false">
+                <button class="usa-button m3-tag customer" data-filter="customer" aria-controls="keyTasks" role="option" aria-selected="false">
                   <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                     <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
                   </svg>
@@ -107,7 +107,7 @@ layout: default
             
             {% if providerActivities.size > 0 %}
             <li>
-              <button class="usa-button m3-tag provider" data-filter="provider" aria-controls="keyTasks" aria-role="option" aria-selected="false">
+              <button class="usa-button m3-tag provider" data-filter="provider" aria-controls="keyTasks" role="option" aria-selected="false">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                 <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
               </svg>
@@ -118,7 +118,7 @@ layout: default
             
             {% if qsmoActivities.size > 0 %}
             <li>
-              <button class="usa-button m3-tag qsmo" data-filter="qsmo" aria-controls="keyTasks" aria-role="option" aria-selected="false">
+              <button class="usa-button m3-tag qsmo" data-filter="qsmo" aria-controls="keyTasks" role="option" aria-selected="false">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                 <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
               </svg>
@@ -129,7 +129,7 @@ layout: default
             
             {% if sumActivities > page.activities.size %}
             <li>
-              <button class="usa-button m3-tag shared" data-filter="shared" aria-controls="keyTasks" aria-role="option" aria-selected="false">
+              <button class="usa-button m3-tag shared" data-filter="shared" aria-controls="keyTasks" role="option" aria-selected="false">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                 <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
               </svg>
