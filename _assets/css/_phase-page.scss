@@ -3,12 +3,14 @@
   background: #0b0083;
   .usa-nav__primary a:not(.usa-button), .usa-nav__primary button {
     color:white;
+    padding-left: 0;
     &:hover{
       background-color: #0b0083;
     }
   }
   .usa-nav__primary button[aria-expanded="true"] {
     background-color: #0b0083;
+    background-image: url(../img/usa-icons-bg/remove--white.svg), linear-gradient(transparent, transparent);
   }
   .usa-nav__primary button[aria-expanded="false"] {
     background-image: url(../img/usa-icons-bg/expand_more--white.svg), linear-gradient(transparent, transparent);
