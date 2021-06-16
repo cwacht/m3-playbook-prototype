@@ -46,7 +46,7 @@ layout: default
           {% if prev %}
             <a class="prev" href="{{site.baseurl}}/m3/subphase/{{prev.phase}}.{{prev.keyTask}}">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="/img/spritesheet.svg#arrow_back"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#arrow_back"></use>
               </svg>
               {{prev.phase}}.{{prev.keyTask}} {{prev.name}}
             </a>
@@ -55,7 +55,7 @@ layout: default
             <a class="next" href="{{site.baseurl}}/m3/subphase/{{next.phase}}.{{next.keyTask}}">
               {{next.phase}}.{{next.keyTask}} {{next.name}}
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-                <use xlink:href="/img/spritesheet.svg#arrow_forward"></use>
+                <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#arrow_forward"></use>
               </svg>
             </a>
           {% endif %}
@@ -88,7 +88,7 @@ layout: default
         </div>
         
         
-        <div id="keyTasks" class="filterlist" data-items=".usa-process-list__item" data-filters=".m3-tag">
+        <div id="keyTasks" class="filterlist" data-items=".usa-process-list__item" data-filters=".m3-tag" aria-live="polite">
         <div id="keyTaskHeader">
           <h2>Task Activities</h2>
           <label for="keyTaskLegend">Filter Responsible Roles:</label>
@@ -96,7 +96,7 @@ layout: default
             
             {% if customerActivities.size > 0 %}
               <li>
-                <button class="usa-button m3-tag customer" data-filter="customer">
+                <button class="usa-button m3-tag customer" data-filter="customer" aria-controls="keyTasks" aria-role="option" aria-selected="false">
                   <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                     <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
                   </svg>
@@ -107,7 +107,7 @@ layout: default
             
             {% if providerActivities.size > 0 %}
             <li>
-              <button class="usa-button m3-tag provider" data-filter="provider">
+              <button class="usa-button m3-tag provider" data-filter="provider" aria-controls="keyTasks" aria-role="option" aria-selected="false">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                 <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
               </svg>
@@ -118,7 +118,7 @@ layout: default
             
             {% if qsmoActivities.size > 0 %}
             <li>
-              <button class="usa-button m3-tag qsmo" data-filter="qsmo">
+              <button class="usa-button m3-tag qsmo" data-filter="qsmo" aria-controls="keyTasks" aria-role="option" aria-selected="false">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                 <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
               </svg>
@@ -129,7 +129,7 @@ layout: default
             
             {% if sumActivities > page.activities.size %}
             <li>
-              <button class="usa-button m3-tag shared" data-filter="shared">
+              <button class="usa-button m3-tag shared" data-filter="shared" aria-controls="keyTasks" aria-role="option" aria-selected="false">
               <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                 <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
               </svg>
@@ -208,7 +208,7 @@ layout: default
           <div class="stakeholders">
             <h2>Stakeholders</h2>
             
-            {% if customerStakeholders %}
+            {% if customerStakeholders.size > 0 %}
               <h3>
                 <svg class="usa-icon color-customer" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
@@ -224,7 +224,7 @@ layout: default
               </ul>
             {% endif %}
             
-            {% if providerStakeholders %}
+            {% if providerStakeholders.size > 0 %}
               <h3>
                 <svg class="usa-icon color-provider" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
@@ -240,7 +240,7 @@ layout: default
               </ul>
             {% endif %}
             
-            {% if qsmoStakeholders %}
+            {% if qsmoStakeholders.size > 0 %}
               <h3>
                 <svg class="usa-icon color-qsmo" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>

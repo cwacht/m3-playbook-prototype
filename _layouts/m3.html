@@ -22,13 +22,13 @@ layout: default
 
         <div class="m3-summary-box usa-summary-box" role="complementary">
           <div class="usa-summary-box__body">
-            <h3 class="usa-summary-box__heading">Objective</h3>
+            <h2 class="usa-summary-box__heading">Objective</h2>
             <div class="usa-summary-box__text">
               <p>{{page.objective}}</p>
             </div>
           </div>
         </div>
-        <div class="keyTasks filterlist" data-items=".m3-keyTask" data-filters=".m3-tag">
+        <div id="FilterList" class="keyTasks filterlist" data-items=".m3-keyTask" data-filters=".m3-tag" aria-live="polite">
           <div id="keyTaskHeader">
             <h2>Key Tasks</h2>
             <label for="keyTaskLegend">Filter Responsible Roles:</label>
@@ -36,7 +36,7 @@ layout: default
               
               {% if customerTasks.size > 0 %}
                 <li>
-                  <button class="usa-button m3-tag customer" data-filter="customer">
+                  <button class="usa-button m3-tag customer" data-filter="customer" aria-controls="FilterList" aria-role="option" aria-selected="false">
                     <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                       <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "customer" %}"></use>
                     </svg>
@@ -47,7 +47,7 @@ layout: default
               
               {% if providerTasks.size > 0 %}
               <li>
-                <button class="usa-button m3-tag provider" data-filter="provider">
+                <button class="usa-button m3-tag provider" data-filter="provider" aria-controls="FilterList" aria-role="option" aria-selected="false">
                 <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "provider" %}"></use>
                 </svg>
@@ -58,7 +58,7 @@ layout: default
               
               {% if qsmoTasks.size > 0 %}
               <li>
-                <button class="usa-button m3-tag qsmo" data-filter="qsmo">
+                <button class="usa-button m3-tag qsmo" data-filter="qsmo" aria-controls="FilterList" aria-role="option" aria-selected="false">
                 <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "qsmo" %}"></use>
                 </svg>
@@ -69,7 +69,7 @@ layout: default
               
               {% if sumTasks > keyTasks.size %}
               <li>
-                <button class="usa-button m3-tag shared" data-filter="shared">
+                <button class="usa-button m3-tag shared" data-filter="shared" aria-controls="FilterList" aria-role="option" aria-selected="false">
                 <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                   <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = "shared" %}"></use>
                 </svg>
@@ -126,7 +126,7 @@ layout: default
 
         <div class="m3-summary-box usa-summary-box" role="complementary">
           <div class="usa-summary-box__body">
-            <h3 class="usa-summary-box__heading">Criteria to Exit Phase {{ page.phase }}</h3>
+            <h2 class="usa-summary-box__heading">Criteria to Exit Phase {{ page.phase }}</h2>
             <div class="usa-summary-box__text">
               <ul>
                 {% for item in page.exitCriteria  %}
