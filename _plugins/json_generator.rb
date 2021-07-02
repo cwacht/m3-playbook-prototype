@@ -6,6 +6,7 @@ module Jekyll
     safe true
 
     def generate(site)
+      puts("Generating JSON for Static API")
       site.collections["pages"].each do |page|
         render_json(page,site)    
       end
@@ -19,6 +20,8 @@ module Jekyll
       end
       
       path = "_site/static-api" + post.url + "/data.json"
+
+      # TODO: output different set of fields based on pagetype
       
       output = [
         "url": post.to_liquid["url"],

@@ -1,3 +1,28 @@
+PATH="$HOME/.rbenv/shims:$PATH"
+benv local 2.6.6
+bundle exec jekyll serve
+
+
+
+TODO:
+  * Update Naming convention
+    * m3 layout should be phasePage
+    * subphase should be keyTask
+  * Add page content and styles
+    * Overview Page
+    * Resources Page
+  * Remove extra stuff
+    * _includes
+      * hero.html
+      * highlights.html
+      * tagline.html
+    * _layouts
+      * data
+      * posts
+      * wide
+  * Update Netlify via admin/config.yml
+
+
 Bookmark: Phase 1 Activities
 
 Learn about Netlify to enable jekyll-admin on federalist

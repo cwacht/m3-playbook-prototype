@@ -44,26 +44,40 @@ $theme-header-max-width:            'widescreen';
 .textAlignCenter{
   text-align: center;
 }
+.space-between{
+  justify-content: space-between;
+}
 
-[href$=".pdf"]::after {
-  content: '  (PDF)';
-  color: red;
-}
-[href$=".docx"]::after {
-  content: '  (DOCX)';
-  color: blue;
-}
-[href$=".pptx"]::after {
-  content: '  (PPTX)';
-  color: orange;
-}
-[href$=".xlsx"]::after {
-  content: '  (XLSX)';
-  color: green;
-}
+// [href$=".pdf"]::after {
+//   content: '  (PDF)';
+//   color: red;
+// }
+// [href$=".docx"]::after {
+//   content: '  (DOCX)';
+//   color: blue;
+// }
+// [href$=".pptx"]::after {
+//   content: '  (PPTX)';
+//   color: orange;
+// }
+// [href$=".xlsx"]::after {
+//   content: '  (XLSX)';
+//   color: green;
+// }
+// [href$=".pdf"]::after, [href$=".docx"]::after, [href$=".pptx"]::after, [href$=".xlsx"]::after {
+//   content: ' ';
+//   background-image: url(../img/spritesheet.svg#file_download;);
+// }
+
 
 .usa-section.m3-section{
   padding-top: 1em;
+}
+.usa-nav__primary > .usa-nav__primary-item > a, .usa-nav__primary button{
+  font-weight: normal;
+}
+.usa-nav__primary-item.active button {
+  font-weight: bold;
 }
 .usa-nav__primary-item h2{
   color: white;

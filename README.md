@@ -18,7 +18,8 @@ To build but not serve the site, run `npm run build` or `bundle exec jekyll buil
 
 ## Modifications
 
-To generate json files of page data, this project uses a custom jekyll plugin. It is located in `/_plugins/json_generator.rb`. The json files are generated in the `/static-api` directory and match the paths of the pages they represent.
+To generate json files of page data, this project uses a custom jekyll plugin. It is located in `/_plugins/json_generator.rb`. The json files are generated in the `/static-api` directory and match the paths of the pages they represent. This runs every time the site is generated, so it does not require any extra steps.
+
 ### Example:
 A page located at
 `domain.com/path/to/page`

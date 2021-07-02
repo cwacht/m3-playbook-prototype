@@ -12,14 +12,23 @@
     <div class="keyTask-id">{{ page.phase }}.{{item.keyTask}}</div>
 
     <a href="#modal-{{ page.phase }}-{{item.keyTask}}" aria-controls="modal-{{ page.phase }}-{{item.keyTask}}" data-open-modal class="keyTask-name overlayLink">
-      <div class="keyTask-name">{{ item.name }}</div>
+      {{ item.name }}
     </a>
     
     <div class="keyTask-responsibleParty">
-      <svg class="usa-icon color-{{ item.responsibleParty }}" aria-hidden="true" focusable="false" role="img">
-        <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = item.responsibleParty %}"></use>
+      <svg class="usa-icon color-{{ responsibleParty }}" aria-hidden="true" focusable="false" role="img">
+        <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = responsibleParty %}"></use>
       </svg>
-      {{ item.responsibleParty }}
+      {{responsibleParty}}
+      {% if responsibleParty == "shared" %}
+        {% for party in item.responsibleParty %}
+            <svg class="usa-icon color-{{ party }}" aria-hidden="true" focusable="false" role="img">
+              <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = party %}"></use>
+            </svg>
+            {{ party }}
+        {% endfor %}
+      {% endif %}
+
     </div>
 
     <a href="{{site.baseurl}}/m3/subphase/{{ page.phase }}.{{item.keyTask}}" class="usa-button usa-button--outline">
@@ -58,6 +67,11 @@
   <div class="usa-modal m3-modal" id="modal-{{ page.phase }}-{{item.keyTask}}" aria-labelledby="modal-{{ page.phase }}-{{item.keyTask}}-heading" aria-describedby="modal-{{ page.phase }}-{{item.keyTask}}-description">
     <div class="usa-modal__content">
       <section class="usa-modal__main">
+        <button class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal="">
+          <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+            <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#close"></use>
+          </svg>
+        </button>
 
         <section class="m3-modal-header bg-{{item.category}}">
             <svg aria-hidden="true" focusable="false" role="img">

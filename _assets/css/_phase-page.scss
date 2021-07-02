@@ -141,20 +141,70 @@ a.usa-nav__link.m3-intro-menuLink {
     border-radius: 10px;
 }
 }
+
+// .parties {
+//   border: 1px solid lightgrey;
+//   border-radius: 4px;
+//   padding: 5px;
+//   margin-left: -10px;
+//   width: 100px;
+// }
+.party {
+  display: inline-block;
+}
 .m3-keyTask{
   width: 100%;
   margin-bottom: 0.3em;
   display:grid;
   grid-template:
-    [row1-start] "id name button" auto [row1-end]
-    [row2-start] "id responsibleParty button" 25px [row2-end]
-    / 50px auto 140px;
+    [row1-start] "id responsibleParty" auto [row1-end]
+    [row2-start] "id name" auto [row2-end]
+    [row2-start] "id button" auto [row2-end]
+    / 40px auto;
   border: 1px solid #dfe1e2;
   border-radius: 0.5em;
   padding-left: 0.5em;
-  max-height: 70px;
+  max-height: 150px;
   transition: all 0.5s ease;
   padding: 0.5em 1em;
+  
+  .keyTask-id{
+    grid-area:id;
+    justify-self:center;
+  }
+  .keyTask-name{
+    grid-area:name;
+    align-self:center;
+    text-decoration: none;
+    color: initial;
+    margin-bottom: 0.5em;
+  }
+  .keyTask-responsibleParty{
+    grid-area:responsibleParty;
+  }
+  .usa-button{
+    grid-area:button;
+    justify-self:baseline;
+    align-self:center;
+  }
+
+  @media (min-width: 550px){
+    grid-template:
+    [row1-start] "id responsibleParty button" auto [row1-end]
+    [row2-start] "id name button" 25px [row2-end]
+    / 50px auto 140px;
+    .keyTask-id{
+      align-self:center;
+    }
+    .keyTask-responsibleParty {
+      margin-left: 0;
+    }
+    .parties {
+      display: inline-block;
+      width: auto;
+      margin-left: 5px;
+    }
+  }
 
   &:last-of-type{
     margin-bottom: 0;
@@ -206,27 +256,6 @@ a.usa-nav__link.m3-intro-menuLink {
     padding-bottom: 0;
     margin: 0;
   }
-  
-  .keyTask-id{
-    grid-area:id;
-    justify-self:center;
-    align-self:center;
-  }
-  .keyTask-name{
-    grid-area:name;
-    align-self:center;
-    text-decoration: none;
-    color: initial;
-  }
-  .keyTask-responsibleParty{
-    grid-area:responsibleParty;
-    align-self:center;
-  }
-  .usa-button{
-    grid-area:button;
-    justify-self:center;
-    align-self:center;
-  }
 }
 
 
@@ -245,6 +274,12 @@ a.usa-nav__link.m3-intro-menuLink {
   .usa-modal__main, .usa-modal__content{
     padding: 0;
     margin: 0;
+  }
+  .usa-modal__close{
+    position: absolute;
+    top: 3em;
+    right: 1em;
+    color: white;
   }
   .m3-modal-header{
     background-image: url(../img/m3-pattern.svg);

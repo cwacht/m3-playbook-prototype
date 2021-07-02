@@ -28,7 +28,11 @@ where we provide an easy way to manage your navigation system
 
         
         {% for phase in phases %}
-          <li class="usa-nav__primary-item">
+          {% assign active = "" %}
+          {% if phase.phase == page.phase %}
+            {% assign active = " active" %}
+          {% endif %}
+          <li class="usa-nav__primary-item{{active}}">
             <button class="usa-accordion__button usa-nav__link" aria-expanded="false"
               aria-controls="NavItem-Phase{{phase.phase}}"><span>{{phase.phase}}: {{ phase.name }}</span></button>
 

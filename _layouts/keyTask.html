@@ -36,7 +36,7 @@ layout: default
 
 <div class="usa-section m3-section">
   <div class="grid-container">
-    <div class="grid-row grid-gap">
+    <div class="grid-row grid-gap space-between">
 
       <div class="desktop:grid-col-12">
         
@@ -152,36 +152,64 @@ layout: default
               <p class="usa-process-list__heading font-sans-md line-height-sans-1 keyTask-name">{{ item.text }}</p>
               
               <div class="keyTask-responsibleParty">
+                  {{responsibleParty | capitalize}}
                   <svg class="usa-icon color-{{ responsibleParty }}" aria-hidden="true" focusable="false" role="img">
                     <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = responsibleParty %}"></use>
                   </svg>
-                  {{responsibleParty}}
-                  {% if responsibleParty == "shared" %}
-                    ({{item.responsibleParty | join: ", " }})
-                  {% endif %}
               </div>
               
-              <div class="keyTask-output">
-                <div class="keyTask-output-label">Targeted Output:</div>
-                <div class="keyTask-output-name">{{item.output}}</div>
-                <div class="keyTask-output-icons">
-                  {% if item.template %}
-                    <a href="{{item.template}}" class="usa-tooltip" data-position="right" title="Download Template">
-                      <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+              <div class="keyTask-resources">
+                {% if item.input %}
+                <div class="keytask-input">
+                  <div class="keytask-label">Input:</div>
+                  <div class="keytask-value">{{item.input}}</div>
+                </div>
+                {% endif %}
+                {% if item.output %}
+                <div class="keytask-output">
+                  <div class="keytask-label">Targeted Output:</div>
+                  <div class="keytask-value">{{item.output}}</div>
+                </div>
+                {% endif %}
+                {% if item.template %}
+                <div class="keytask-template">
+                  <div class="keytask-label">Template:</div>
+                  <div class="keytask-value">
+                    <a href="{{item.template}}"{% comment %} class="usa-tooltip" data-position="right" title="Download Template"{% endcomment %}>
+                      Download Template <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                         <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#file_download"></use>
                       </svg>
                     </a>
-                  {% endif %}
-
-                  {% if item.example %}
-                    <a href="{{item.example}}" class="usa-tooltip" data-position="right" title="View Example">
-                      <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+                  </div>
+                </div>
+                {% endif %}
+                {% if item.example %}
+                <div class="keytask-example">
+                  <div class="keytask-label">Example:</div>
+                  <div class="keytask-value">
+                    <a href="{{item.template}}"{% comment %} class="usa-tooltip" data-position="right" title="Download Template"{% endcomment %}>
+                      View Template <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
                         <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#launch"></use>
                       </svg>
                     </a>
-                  {% endif %}
+                  </div>
                 </div>
+                {% endif %}
               </div>
+              {% comment %}
+              {% if responsibleParty == "shared" %}
+              <div class="parties">
+                {% for party in item.responsibleParty %}
+                  <div class="party">
+                    <svg class="usa-icon color-{{ party }}" aria-hidden="true" focusable="false" role="img">
+                      <use xlink:href="{{site.baseurl}}/img/spritesheet.svg#{% include categoryTag.html category = party %}"></use>
+                    </svg>
+                    {{ party | capitalize }}
+                  </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% endcomment %}
             </div>
           </li>
 
@@ -202,7 +230,7 @@ layout: default
 
         
       </div>
-      <div class="desktop:grid-col-3 grid-offset-1">
+      <div class="desktop:grid-col-3">
         <section id="documentation">
 
           <div class="stakeholders">

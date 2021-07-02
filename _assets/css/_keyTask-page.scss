@@ -24,10 +24,20 @@
 .m3-taskActivity{
   display:grid;
   grid-template:
-    [row1-start] "responsibleParty name" auto [row1-end]
-    [row2-start] "responsibleParty output" auto [row2-end]
-    / 100px auto;
+    [row1-start] "responsibleParty" auto [row1-end]
+    [row2-start] "name" auto [row2-end]
+    [row3-start] "output" auto [row3-end]
+    [row4-start] "parties" auto [row4-end];
   padding-bottom: 0.5em;
+
+  .keyTask-resources {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .keyTask-resources > div {
+      width: 50%;
+  }
   
 
   .keyTask-output{
@@ -46,6 +56,12 @@
   .keyTask-output-name{
     grid-area:name;
   }
+  .parties{
+    grid-area: parties;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid lightgrey;
+  }
   .keyTask-output-icons{
     grid-area:icons;
     a{
@@ -62,6 +78,27 @@
   }
   .keyTask-responsibleParty{
     grid-area:responsibleParty;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+    margin-top: -5px;
+    max-width: 100px;
+  }
+  @media (min-width: 550px){
+    grid-template:
+    [row1-start] "responsibleParty name name" auto [row1-end]
+    [row2-start] "responsibleParty output parties" auto [row2-end]
+    / 100px 1fr fit-content(50%);
+
+    .keyTask-output{
+      grid-template:
+      [row1-start] "label icons" auto [row1-end]
+      [row2-start] "name icons" auto [row2-end]
+      / auto 1fr;
+    }
+    .keyTask-resources > div {
+      width: 25%;
+    }
   }
 }
 
@@ -69,7 +106,7 @@
 .m3-process-list{
   .usa-process-list__item {
     max-width: none;
-    max-height: 200px;
+    max-height: 300px;
     transition: all 0.5s ease;
     &::before {
       border: none;
